@@ -1,0 +1,74 @@
+/* =========================================================
+DESIGN SYSTEM — VARIABLES.SCSS
+========================================================= */
+
+/* ---------------------------------------------------------
+COLORS
+--------------------------------------------------------- */
+// Primary
+$blue: #3442b5;
+$blue-dark: #3019b2;
+$purple: #271c47;
+$yellow: #f7ca11;
+$background: #ffffff;
+
+// Neutral Scale
+$white: #ffffff;
+$neutral-100: #f4f4f4;
+$neutral-200: #e7e7e7;
+$neutral-300: #f6f6f6;
+$neutral-500: #676767;
+$neutral-600: #4a4a4a;
+$neutral-700: #3f3f40;
+$neutral-800: rgba(34, 34, 34, 0.71);
+
+/* ---------------------------------------------------------
+TYPOGRAPHY
+--------------------------------------------------------- */
+
+// Fontes
+$font-poppins: 'Poppins', sans-serif;
+$font-work-sans: 'Work Sans', sans-serif;
+
+// Font Weights
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
+// Font Sizes
+$font-xs: 13px;
+$font-sm: 14px;
+$font-base: 16px;
+$font-lg: 32px;
+
+// Line Heights
+$line-xs: 16px;
+$line-sm: 20px;
+$line-base: 24px;
+$line-lg: 120%;
+
+/* ---------------------------------------------------------
+   BORDER RADIUS
+   --------------------------------------------------------- */
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-full: 50%;
+
+/* ---------------------------------------------------------
+   SHADOWS
+   --------------------------------------------------------- */
+$shadow-sm: 0px 4px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0px 8px 16px rgba(0, 0, 0, 0.12);
+
+/* ---------------------------------------------------------
+   LAYOUT
+   --------------------------------------------------------- */
+
+// Spacing Scale
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 42px;
+$spacing-xl: 80px;

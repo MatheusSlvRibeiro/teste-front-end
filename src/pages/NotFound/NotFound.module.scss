@@ -1,0 +1,47 @@
+.notFoundContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #222;
+    font-family: $font-poppins;
+    text-align: center;
+    padding: 2rem;
+}
+
+.notFoundTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.notFoundMessage {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.notFoundCode {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #e63946;
+    margin-bottom: 1rem;
+}
+
+.notFoundBack {
+    background: #457b9d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: $font-work-sans;
+    font-weight: 600;
+    transition: background 0.2s;
+    margin-top: 1rem;
+}
+
+.notFoundBack:hover {
+    background: #1d3557;
+}

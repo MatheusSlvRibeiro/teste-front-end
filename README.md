@@ -1,31 +1,148 @@
-# Teste Econverse: Vaga Desenvolvedor Front-End
+# 📦 Teste Front-End — React + TypeScript + Vite + SCSS
 
-### Vem ser #Econverse!
+Este projeto é a base para o teste de desenvolvedor Front-End da Econverse, utilizando um setup moderno e boas práticas de desenvolvimento web.
 
-Segue abaixo as instruções para a execução do teste.
+---
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Desenvolva a página conforme as **Especificações Técnicas** 
-- Crie um README com as instruções para compilar, testar e rodar o projeto.
-- O link do repositório deverá ser enviado para o e-mail ana.nascimento@econverse.com.br com o título **Teste Vaga FrontEnd**
+## 🚀 Tecnologias Utilizadas
 
-## Especificações Técnicas
-- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
-- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
-- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
-- Utilizar Pré-processador Sass, Less ou Stylus.
-- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
-- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [React Router DOM](https://reactrouter.com/)
+- [Sass (SCSS)](https://sass-lang.com/)
+- [ESLint + Prettier + Husky + lint-staged](https://eslint.org/)
 
-## Pontos Extras
-- Utilizar Boas práticas de SEO
-- Uso de HTML semântico
+---
 
-## O que avaliaremos em seu teste
-- Organização do projeto
-- Lógica do código
-- Componentização
-- Alcance dos objetivos propostos
+## 📁 Estrutura do Projeto
 
-**Boa sorte! ;)**
+```bash
+teste-front-end/
+├── public/                # Arquivos estáticos (ex: favicon, logos)
+│   └── vite.svg
+├── src/
+│   ├── assets/            # Imagens e outros arquivos estáticos
+│   ├── components/        # Componentes reutilizáveis
+│   ├── hooks/             # Custom hooks
+│   ├── pages/             # Páginas da aplicação
+│   │   ├── Home/
+│   │   │   └── Home.tsx
+│   │   └── NotFound/
+│   │       ├── NotFound.module.scss
+│   │       └── NotFound.tsx
+│   ├── routes/            # Configuração de rotas
+│   │   └── index.tsx
+│   ├── services/          # Serviços e APIs
+│   ├── styles/            # SCSS global, variáveis e reset
+│   │   ├── global.scss
+│   │   ├── main.scss
+│   │   ├── reset.scss
+│   │   └── variables.scss
+│   ├── types/             # Tipos TypeScript
+│   ├── App.tsx            # Componente raiz
+│   └── main.tsx           # Ponto de entrada React
+├── .husky/                # Hooks do Git (Husky)
+├── .prettierrc            # Configuração do Prettier
+├── eslint.config.js       # Configuração do ESLint
+├── tsconfig.json          # Configuração do TypeScript
+├── tsconfig.app.json      # TypeScript para aplicação
+├── tsconfig.node.json     # TypeScript para Node.js
+├── vite.config.ts         # Configuração do Vite
+├── package.json           # Dependências e scripts
+└── README.md              # Este documento
+```
+
+---
+
+## 🛠️ Scripts Disponíveis
+
+| Comando             | Descrição                                     |
+| ------------------- | --------------------------------------------- |
+| `npm run dev`       | Inicia o projeto em modo desenvolvimento      |
+| `npm run build`     | Gera os arquivos para produção (`dist/`)      |
+| `npm run preview`   | Pré-visualiza o build de produção             |
+| `npm run lint`      | Executa o ESLint                              |
+| `npm run format`    | Formata o código com Prettier                 |
+| `npm run prepare`   | Ativa o Husky                                 |
+| `npm run typecheck` | Verifica tipos TypeScript sem emitir arquivos |
+
+---
+
+## 🏃 Como Executar
+
+1. **Clone o repositório:**
+
+    ```bash
+    git clone <url-do-repositorio>
+    cd teste-front-end
+    ```
+
+2. **Instale as dependências:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Execute em modo desenvolvimento:**
+
+    ```bash
+    npm run dev
+    ```
+
+4. **Acesse a aplicação:**
+    ```
+    http://localhost:5173
+    ```
+
+---
+
+## 💡 Requisitos para Desenvolvimento
+
+- **Node.js** v18+
+- **npm** (ou outro gerenciador de pacotes)
+- **Git** configurado
+- **VS Code** (recomendado) com extensões ESLint e Prettier
+
+---
+
+## 🔧 Configurações de Desenvolvimento
+
+O projeto inclui configurações para:
+
+- **ESLint**: Análise estática de código
+- **Prettier**: Formatação automática
+- **Husky**: Git hooks para qualidade de código
+- **lint-staged**: Lint apenas em arquivos modificados
+- **TypeScript**: Tipagem estática
+
+### Aliases de Importação
+
+Para imports absolutos, utilize os aliases configurados:
+
+- `@` : `src`
+- `@assets` : `src/assets`
+- `@components` : `src/components`
+- `@hooks` : `src/hooks`
+- `@pages` : `src/pages`
+- `@services` : `src/services`
+- `@styles` : `src/styles`
+- `@app-types` : `src/types`
+
+Os aliases estão definidos em `tsconfig.json` (TypeScript) e `vite.config.ts` (Vite).  
+**Se adicionar novas pastas e quiser criar um alias, altere ambos os arquivos e reinicie o servidor de desenvolvimento.**
+
+---
+
+## 🎨 UI/UX
+
+- UI desenvolvida diretamente com SCSS, sem bibliotecas de componentes externas.
+- Design responsivo, seguindo o layout proposto no Figma.
+- Sistema de cores, tipografia e espaçamentos definidos em `src/styles/variables.scss`.
+
+---
+
+## 📄 Licença
+
+Este projeto é destinado exclusivamente para o teste de seleção da Econverse.  
+Uso restrito para fins de avaliação técnica.
