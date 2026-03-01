@@ -1,0 +1,360 @@
+.header {
+    background: $background;
+    border-bottom: 1px solid $gray-border;
+    font-family: $font-poppins;
+    height: 120px;
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header__nav {
+    align-items: center;
+    background: $background;
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-xs $spacing-sm;
+}
+
+.header__menuBtn {
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin-right: $spacing-xs;
+    padding: 0;
+}
+
+.header__menuIcon {
+    height: 28px;
+    width: 28px;
+}
+
+.header__actions {
+    align-items: center;
+    display: flex;
+    gap: $spacing-xs;
+}
+
+.header__iconBtn {
+    align-items: center;
+    background: none;
+    border: none;
+    display: flex;
+    padding: 0;
+    position: relative;
+
+    img {
+        height: 32px;
+        width: 32px;
+    }
+}
+
+.header__iconBtn--desktopOnly {
+    display: none;
+}
+
+.header__iconImg--package {
+    // Ajuste visual temporário: este SVG tem área útil menor/"padding" interno diferente dos demais ícones.
+    transform: scale(0.82);
+    transform-origin: center;
+}
+
+.header__searchRow {
+    align-items: center;
+    display: flex;
+    gap: $spacing-xs;
+    margin: 0 $spacing-sm;
+}
+
+.header__iconBtn--mobileCart {
+    flex-shrink: 0;
+    margin-left: $spacing-xs;
+}
+
+.header__desktopBar {
+    display: none;
+}
+
+.header__desktopBarList {
+    align-items: center;
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 1280px;
+    min-height: 40px;
+    padding: 0 $spacing-md;
+
+    li {
+        align-items: center;
+        display: flex;
+    }
+
+    a {
+        align-items: center;
+        color: $gray-medium;
+        display: inline-flex;
+        font-size: $font-xs;
+        font-weight: $font-semibold;
+        gap: 6px;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $blue-dark;
+        }
+
+        img {
+            flex-shrink: 0;
+            height: 16px;
+            width: 16px;
+        }
+    }
+}
+
+.header__desktopBarLink--highlight {
+    color: $blue;
+}
+
+.header__overlay {
+    animation: fadeIn 0.3s ease;
+    background: rgba(34, 34, 34, 0.45);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 999;
+}
+
+.header__overlay--close {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.header__menu {
+    animation: slideIn 0.3s ease;
+    background: $background;
+    box-shadow: $shadow-md;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    left: 0;
+    max-width: 340px;
+    position: fixed;
+    top: 0;
+    width: 80vw;
+    will-change: transform, opacity;
+    z-index: 1000;
+}
+
+.header__menu--close {
+    animation: slideOut 0.3s ease forwards;
+}
+
+.header__menuHeader {
+    align-items: center;
+    border-bottom: 1px solid $gray-border;
+    display: flex;
+    font-size: $font-base;
+    font-weight: $font-bold;
+    justify-content: space-between;
+    padding: $spacing-sm;
+}
+
+.header__closeMenuBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.header__closeMenuIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.header__menuLogin {
+    align-items: center;
+    border-bottom: 1px solid $gray-border;
+    display: flex;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+}
+
+.header__menuLoginIcon {
+    flex-shrink: 0;
+    height: 20px;
+    object-fit: contain;
+    width: 20px;
+}
+
+.header__menuLoginContent {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.header__menuLoginTitle {
+    color: $neutral-700;
+    font-size: $font-base;
+    font-weight: $font-medium;
+}
+
+.header__menuLoginSubtitle {
+    color: $neutral-500;
+    font-size: $font-xs;
+}
+
+.header__menuNav {
+    padding: $spacing-xs $spacing-sm;
+}
+
+.header__menuCategoryTitle {
+    color: $neutral-500;
+    display: block;
+    font-size: $font-xs;
+    font-weight: $font-bold;
+    margin-bottom: $spacing-xs;
+}
+
+.header__menuList {
+    list-style: none;
+    margin: 0 0 $spacing-xs 0;
+    padding: 0;
+
+    li {
+        margin-bottom: $spacing-xs;
+
+        a {
+            color: $neutral-700;
+            font-size: $font-base;
+            font-weight: $font-regular;
+            text-decoration: none;
+
+            &:hover {
+                color: $blue;
+            }
+
+            strong {
+                color: $blue;
+                font-weight: $font-bold;
+            }
+        }
+    }
+}
+
+.header__menuListSecondary {
+    border-top: 1px solid $gray-border;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin: $spacing-xs 0;
+
+        a {
+            align-items: center;
+            color: $neutral-700;
+            display: flex;
+            font-size: $font-base;
+            gap: 6px;
+            text-decoration: none;
+
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@media (min-width: $tablet) {
+    .header {
+        height: auto;
+    }
+
+    .header__nav {
+        gap: $spacing-sm;
+        justify-content: flex-start;
+        padding: $spacing-sm $spacing-md;
+    }
+
+    .header__menuBtn {
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+
+    .header__searchRow {
+        display: none;
+    }
+
+    .header__actions {
+        flex-shrink: 0;
+    }
+
+    .header__iconBtn--desktopOnly {
+        display: flex;
+    }
+}
+
+@media (min-width: $desktop) {
+    .header__menuBtn {
+        display: none;
+    }
+
+    .header__desktopBar {
+        background: $background;
+        border-top: 1px solid $gray-border;
+        box-shadow: $shadow-md;
+        display: block;
+    }
+
+    .header__overlay,
+    .header__menu {
+        display: none;
+    }
+}

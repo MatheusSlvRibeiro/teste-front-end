@@ -1,8 +1,11 @@
+import { Header } from '@/components/Header/Header';
+import { TopBar } from '@/components/TopBar/TopBar';
+
 export default function Home() {
     return (
         <main>
-            <h1>Home</h1>
-            <p>Página inicial do projeto.</p>
+            <TopBar />
+            <Header />
         </main>
     );
 }

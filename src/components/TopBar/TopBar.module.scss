@@ -1,0 +1,48 @@
+.topbar {
+    background: $white;
+    border-bottom: 1px solid $gray-border;
+    display: none;
+    width: 100%;
+    max-width: 1280px;
+    height: 32px;
+    margin: 0 auto;
+
+    &__container {
+        display: flex;
+        gap: 26px;
+        justify-content: space-evenly;
+        list-style: none;
+        margin: 0 auto;
+        max-width: $wide;
+        min-height: 32px;
+        padding: 6px 40px;
+    }
+
+    &__item {
+        align-items: center;
+        color: $neutral-500;
+        display: inline-flex;
+        font-size: $font-xs;
+        font-weight: $font-medium;
+        gap: 6px;
+        white-space: nowrap;
+
+        strong {
+            color: $blue-dark;
+            font-weight: $font-semibold;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .topbar {
+        display: block;
+    }
+}
