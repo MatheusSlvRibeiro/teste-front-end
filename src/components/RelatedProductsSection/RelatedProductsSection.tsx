@@ -13,6 +13,9 @@ interface RelatedProductsSectionProps {
     sectionId?: string;
     error?: string | null;
     onRetry?: () => void;
+    showCategories?: boolean;
+    viewMoreLabel?: string;
+    onViewMore?: () => void;
 }
 
 export function RelatedProductsSection({
@@ -24,6 +27,9 @@ export function RelatedProductsSection({
     sectionId,
     error,
     onRetry,
+    showCategories = true,
+    viewMoreLabel = 'Ver mais',
+    onViewMore,
 }: RelatedProductsSectionProps) {
     return (
         <section
@@ -36,7 +42,20 @@ export function RelatedProductsSection({
                     <SectionTitle text={title} subtitle={subtitle} />
                 </header>
 
-                <CategoryTabs />
+                {showCategories ? (
+                    <CategoryTabs />
+                ) : (
+                    <div className={styles.actions}>
+                        <button
+                            type="button"
+                            className={styles.viewMoreButton}
+                            aria-label={`Ver mais produtos da seção ${title}`}
+                            onClick={onViewMore}
+                        >
+                            {viewMoreLabel}
+                        </button>
+                    </div>
+                )}
 
                 {error ? (
                     <div

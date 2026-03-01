@@ -8,6 +8,8 @@ import { TopBar } from '@/components/TopBar/TopBar';
 import { useRelatedProducts } from '@/hooks/useRelatedProducts';
 import type { Product } from '@/types/Product';
 import styles from './Home.module.scss';
+import { Partners } from '@/components/Partners/Partners';
+import { BrandsSection } from '@/components/BrandsSection/BrandsSection';
 
 export default function Home() {
     const { products, loading, error, retry } = useRelatedProducts();
@@ -38,6 +40,35 @@ export default function Home() {
                     onProductClick={handleProductClick}
                     error={error}
                     onRetry={retry}
+                    showCategories
+                />
+
+                <Partners />
+
+                <RelatedProductsSection
+                    sectionId="produtos"
+                    products={products}
+                    loading={loading}
+                    onProductClick={handleProductClick}
+                    error={error}
+                    onRetry={retry}
+                    showCategories={false}
+                    viewMoreLabel="Ver todos"
+                />
+
+                <Partners />
+
+                <BrandsSection />
+
+                <RelatedProductsSection
+                    sectionId="produtos"
+                    products={products}
+                    loading={loading}
+                    onProductClick={handleProductClick}
+                    error={error}
+                    onRetry={retry}
+                    showCategories={false}
+                    viewMoreLabel="Ver todos"
                 />
             </div>
 

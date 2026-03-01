@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+
+.brands {
+    padding: 28px 0 40px;
+
+    &__container {
+        max-width: $wide;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    &__list {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        padding: 12px 2px;
+        margin: -12px -2px;
+        gap: 22px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__logo {
+        flex: 0 0 auto;
+        width: 160px;
+        aspect-ratio: 1;
+        scroll-snap-align: start;
+        border-radius: 999px;
+        background: #fdfdfd;
+        border: 1px solid #ececec;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            color: #271c47;
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__container {
+            padding: 0 40px;
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+        }
+
+        &__logo {
+            width: 100%;
+            min-width: 0;
+        }
+    }
+}
