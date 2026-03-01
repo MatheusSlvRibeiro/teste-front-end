@@ -1,0 +1,113 @@
+.carousel {
+    position: relative;
+
+    @include respond-to(mobile) {
+        padding: 0;
+    }
+
+    &__track {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 20px;
+        overflow: visible;
+        cursor: grab;
+        user-select: none;
+        touch-action: pan-y;
+    }
+
+    &__track--dragging {
+        cursor: grabbing;
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
+        border-radius: $radius-full;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        z-index: 2;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            opacity 0.2s ease;
+
+        &:hover {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            transform: translateY(-50%) scale(1.02);
+        }
+
+        &--left {
+            left: -40px;
+        }
+
+        &--right {
+            right: -40px;
+        }
+    }
+
+    &__arrow-icon {
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid $neutral-700;
+        border-right: 2px solid $neutral-700;
+
+        &--left {
+            transform: rotate(-135deg);
+            margin-left: 4px;
+        }
+
+        &--right {
+            transform: rotate(45deg);
+            margin-right: 4px;
+        }
+    }
+
+    &__arrow--left {
+        @include respond-to(desktop) {
+            left: 4px;
+        }
+
+        @include respond-to(tablet) {
+            left: 4px;
+        }
+
+        @include respond-to(mobile) {
+            left: 6px;
+        }
+    }
+
+    &__arrow--right {
+        @include respond-to(desktop) {
+            right: 4px;
+        }
+
+        @include respond-to(tablet) {
+            right: 4px;
+        }
+
+        @include respond-to(mobile) {
+            right: 6px;
+        }
+    }
+}
+
+.slide-enter {
+    animation: slideInRight 0.4s ease-out both;
+}
+
+.slide {
+    flex: 0 0
+        calc(
+            (100% - (20px * (var(--items-per-page, 4) - 1))) /
+                var(--items-per-page, 4)
+        );
+    min-width: 0;
+}

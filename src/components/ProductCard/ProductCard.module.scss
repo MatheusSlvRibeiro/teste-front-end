@@ -1,0 +1,159 @@
+.card {
+    background: $white;
+    border-radius: 12px;
+    box-shadow: $shadow-md;
+    padding: $spacing-sm;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    max-width: 304px;
+    max-height: 500px;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+
+    @include respond-to(mobile) {
+        padding: 12px;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+
+        @include respond-to(mobile) {
+            height: 170px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__image {
+        width: 280px;
+        height: 220px;
+        object-fit: contain;
+
+        @include respond-to(mobile) {
+            max-width: 140px;
+            max-height: 160px;
+        }
+    }
+
+    &__name {
+        font-size: $font-sm;
+        line-height: 1.2;
+        color: #575757;
+        font-weight: $font-light;
+        min-height: 52px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include respond-to(mobile) {
+            min-height: 36px;
+            margin-bottom: $spacing-xs;
+        }
+    }
+
+    &__old-price {
+        font-size: $font-base;
+        color: #9d9d9d;
+        text-decoration: line-through;
+        margin-bottom: 2px;
+    }
+
+    &__price {
+        font-size: 30px;
+        font-weight: $font-bold;
+        color: #3c3c3c;
+        line-height: 1;
+        margin-bottom: 5px;
+
+        @include respond-to(mobile) {
+            font-size: 24px;
+        }
+    }
+
+    &__installments {
+        font-size: 13px;
+        color: #535353;
+        margin-bottom: $spacing-xs;
+    }
+
+    &__shipping {
+        font-size: $font-xs;
+        color: $blue;
+        margin-bottom: 14px;
+    }
+
+    &__button {
+        width: 100%;
+        height: 44px;
+        background: $blue;
+        border-radius: 6px;
+        color: $white;
+        font-size: $font-sm;
+        font-weight: $font-bold;
+        letter-spacing: 0.4px;
+
+        @include respond-to(mobile) {
+            height: 48px;
+        }
+    }
+}
+
+.skeleton {
+    background-color: $white;
+    border-radius: 12px;
+    box-shadow: $shadow-md;
+    padding: $spacing-sm;
+
+    &__image,
+    &__text,
+    &__button {
+        background: linear-gradient(
+            90deg,
+            #f1f1f1 25%,
+            #e5e5e5 50%,
+            #f1f1f1 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+    }
+
+    &__image {
+        width: 100%;
+        height: 220px;
+        border-radius: $radius-md;
+        margin-bottom: 12px;
+    }
+
+    &__text {
+        height: 16px;
+        border-radius: 6px;
+        margin-bottom: $spacing-xs;
+
+        &--short {
+            width: 60%;
+        }
+        &--medium {
+            width: 80%;
+        }
+        &--price {
+            width: 50%;
+            height: 20px;
+        }
+    }
+
+    &__button {
+        height: 50px;
+        border-radius: $radius-md;
+        margin-top: 12px;
+    }
+}

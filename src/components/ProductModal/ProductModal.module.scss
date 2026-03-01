@@ -1,0 +1,158 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+    padding: 20px;
+    transition: opacity 0.2s ease;
+
+    &--closing {
+        opacity: 0;
+    }
+}
+
+.modal {
+    width: 100%;
+    max-width: 770px;
+    background: $white;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+
+        img {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        align-items: center;
+        gap: 26px;
+        padding: 34px 28px;
+
+        @include respond-to(tablet) {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+
+    &__image-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__image {
+        max-width: 220px;
+        max-height: 260px;
+        object-fit: contain;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include respond-to(tablet) {
+            align-items: center;
+        }
+    }
+
+    &__name {
+        font-size: 20px;
+        color: #3e3e3e;
+        line-height: 1.05;
+        font-weight: $font-regular;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    &__description {
+        font-size: 10px;
+        color: #7f7f7f;
+        margin-bottom: 10px;
+        max-width: 330px;
+    }
+
+    &__price {
+        font-size: 20px;
+        font-weight: $font-semibold;
+        color: #3a3a3a;
+        line-height: 1;
+        margin-bottom: 30px;
+    }
+
+    &__details {
+        color: $blue;
+        font-size: 11px;
+        font-weight: $font-semibold;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__counter {
+        border: 1px solid #d8d8d8;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        height: 44px;
+
+        button {
+            width: 35px;
+            height: 42px;
+            border: 0;
+            font-size: 22px;
+            color: #545454;
+            background-color: $white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        span {
+            min-width: 34px;
+            text-align: center;
+            font-size: 15px;
+            color: #444;
+            font-weight: $font-semibold;
+        }
+    }
+
+    &__buyButton {
+        height: 44px;
+        min-width: 170px;
+        border: 0;
+        background: $yellow;
+        color: #232323;
+        border-radius: 6px;
+        font-size: $font-sm;
+        font-weight: $font-bold;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+    }
+}

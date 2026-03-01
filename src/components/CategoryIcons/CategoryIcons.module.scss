@@ -35,7 +35,6 @@
         border-radius: 14px;
         border: 1px solid transparent;
         background: $neutral-100;
-        color: $gray-medium;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -65,7 +64,6 @@
         font-size: $font-sm;
         font-weight: $font-medium;
         text-align: center;
-        color: $gray-medium;
         line-height: 1.2;
         transition: color 0.2s ease;
     }
@@ -73,22 +71,22 @@
     &__item:hover,
     &__item:focus-visible {
         .categories__icon {
-            color: $category-accent;
+            color: $blue-dark;
         }
 
         .categories__label {
-            color: $category-accent;
+            color: $blue-dark;
         }
     }
 
     &__item--active {
         .categories__icon {
-            border-color: $category-accent;
-            color: $category-accent;
+            background: $white;
+            color: $blue-dark;
         }
 
         .categories__label {
-            color: $category-accent;
+            color: $blue-dark;
             font-weight: $font-semibold;
         }
     }

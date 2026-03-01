@@ -1,0 +1,38 @@
+.section-title-wrap {
+    margin-bottom: 18px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__line {
+        flex: 1;
+        height: 1px;
+        background-color: $gray-divider;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    &__text {
+        font-size: 30px;
+        font-weight: $font-bold;
+        line-height: 1;
+        color: $blue;
+        white-space: nowrap;
+
+        @include respond-to(mobile) {
+            font-size: 24px;
+        }
+    }
+
+    &__subtitle {
+        margin-top: $spacing-xs;
+        display: block;
+        text-align: center;
+        color: $neutral-850;
+        font-size: $font-base;
+        font-weight: $font-bold;
+    }
+}
