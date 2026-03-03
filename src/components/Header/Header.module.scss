@@ -34,7 +34,7 @@
 .header__actions {
     align-items: center;
     display: flex;
-    gap: $spacing-xs;
+    gap: $spacing-md;
 }
 
 .header__iconBtn {
@@ -126,7 +126,7 @@
     left: 0;
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 999;
 }
 

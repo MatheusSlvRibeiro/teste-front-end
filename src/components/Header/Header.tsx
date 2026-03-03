@@ -10,6 +10,7 @@ import packageIcon from '@assets/icons/package.svg';
 import heartIcon from '@assets/icons/heart.svg';
 import menuIcon from '@assets/icons/menu.svg';
 import closeIcon from '@assets/icons/x.svg';
+import kingIcon from '@assets/icons/king.svg';
 
 type MenuItem = {
     label: string;
@@ -62,15 +63,15 @@ const headerActionItems: HeaderActionItem[] = [
         desktopOnly: true,
     },
     {
+        label: 'Login',
+        href: '#login',
+        icon: userIcon,
+    },
+    {
         label: 'Carrinho',
         href: '#carrinho',
         icon: cartIcon,
         desktopOnly: true,
-    },
-    {
-        label: 'Login',
-        href: '#login',
-        icon: userIcon,
     },
 ];
 
@@ -83,6 +84,7 @@ const desktopCategoryItems: DesktopCategoryItem[] = [
     {
         label: 'ASSINATURA',
         href: '#assinatura',
+        icon: kingIcon,
     },
 ];
 

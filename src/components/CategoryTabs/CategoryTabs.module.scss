@@ -9,9 +9,17 @@
     animation: fadeIn 0.5s ease-out 0.2s both;
 
     @include respond-to(tablet) {
-        flex-wrap: wrap;
-    }
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
 
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
     @include respond-to(mobile) {
         justify-content: flex-start;
         flex-wrap: nowrap;
@@ -44,6 +52,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    @include respond-to(tablet) {
+        flex: 0 0 auto;
+        min-width: 132px;
+        border-right: 1px solid $neutral-200;
+
+        height: 40px;
+        padding: 0 $spacing-sm;
+    }
 
     @include respond-to(mobile) {
         flex: 0 0 auto;

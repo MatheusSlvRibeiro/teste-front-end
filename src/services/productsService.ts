@@ -1,4 +1,4 @@
-import type { Product } from '@/types/Product';
+import type { Product } from '@/types/product.schema';
 import GenericService from '@/services/genericService';
 import { MOCK_RELATED_PRODUCTS } from './mocks/products.mock';
 

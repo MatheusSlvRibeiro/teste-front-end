@@ -1,4 +1,4 @@
-import type { Product } from '@/types/Product';
+import type { Product } from '@/types/product.schema';
 import { CategoryTabs } from '../CategoryTabs/CategoryTabs';
 import { ProductCarousel } from '../ProductCarousel/ProductCarousel';
 import { SectionTitle } from '../SectionTitle/SectionTitle';

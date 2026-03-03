@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { Product } from '@/types/Product';
+import type { Product } from '@/types/product.schema';
 import { productsService } from '@/services/productsService';
 
 interface UseRelatedProductsResult {

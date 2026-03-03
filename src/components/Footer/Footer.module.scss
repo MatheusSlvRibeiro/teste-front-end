@@ -1,0 +1,121 @@
+.footer {
+    background: $neutral-100;
+
+    &__container {
+        max-width: $wide;
+        margin: 0 auto;
+        padding: 0 $spacing-sm;
+
+        @media (min-width: $desktop) {
+            padding: $spacing-lg 0;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding: $spacing-md;
+
+        @media (min-width: ($mobile + 1px)) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (min-width: ($tablet + 1px)) {
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        }
+
+        @media (min-width: $desktop) {
+            padding: 0;
+        }
+    }
+
+    &__brand {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin-top: $spacing-sm;
+            max-width: 250px;
+            color: $neutral-500;
+            font-size: $font-sm;
+            font-weight: $font-light;
+        }
+
+        > a {
+            justify-content: flex-start;
+        }
+
+        @media (min-width: ($tablet + 1px)) {
+            border-right: 1px solid $gray-divider;
+            padding-right: 38px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 14px;
+        color: $neutral-700;
+        font-size: $font-base;
+        font-weight: $font-bold;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__link {
+        color: $neutral-500;
+        font-size: $font-sm;
+        font-weight: $font-regular;
+    }
+
+    &__social {
+        margin-top: 18px;
+        display: flex;
+        gap: 10px;
+    }
+
+    &__social-link {
+        width: 24px;
+        height: 24px;
+        color: $neutral-600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $font-xs;
+        font-weight: $font-bold;
+        text-transform: uppercase;
+    }
+
+    &__bottom {
+        background-color: $white;
+        height: 50px;
+        display: flex;
+        align-items: center;
+
+        @media (min-width: ($mobile + 1px)) {
+            height: 46px;
+        }
+
+        .footer__container {
+            height: 100%;
+            padding: 0 $spacing-sm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media (min-width: ($mobile + 1px)) {
+                padding: 0 40px;
+            }
+        }
+    }
+
+    &__bottomText {
+        margin: 0;
+        text-align: center;
+        font-weight: $font-light;
+        font-size: $font-sm;
+    }
+}

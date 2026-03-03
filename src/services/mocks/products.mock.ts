@@ -1,4 +1,4 @@
-import type { Product } from '@/types/Product';
+import type { Product } from '@/types/product.schema';
 
 export const MOCK_RELATED_PRODUCTS: Product[] = [
     {

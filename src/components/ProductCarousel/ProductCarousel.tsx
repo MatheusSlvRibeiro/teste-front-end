@@ -9,7 +9,7 @@ import {
     type MouseEvent as ReactMouseEvent,
     type WheelEvent,
 } from 'react';
-import type { Product } from '@app-types/Product';
+import type { Product } from '@/types/product.schema';
 import {
     ProductCard,
     ProductCardSkeleton,

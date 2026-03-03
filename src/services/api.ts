@@ -12,7 +12,7 @@ function buildUrl(path: string, query?: QueryParams): string {
 
     if (query) {
         Object.entries(query).forEach(([key, value]) => {
-            if (value === null || value === undefined) {
+            if (!value) {
                 return;
             }
 

@@ -6,10 +6,12 @@ import { HeroBanner } from '@/components/HeroBanner/HeroBanner';
 import { ProductModal } from '@/components/ProductModal/ProductModal';
 import { TopBar } from '@/components/TopBar/TopBar';
 import { useRelatedProducts } from '@/hooks/useRelatedProducts';
-import type { Product } from '@/types/Product';
+import type { Product } from '@/types/product.schema';
 import styles from './Home.module.scss';
 import { Partners } from '@/components/Partners/Partners';
 import { BrandsSection } from '@/components/BrandsSection/BrandsSection';
+import { Newsletter } from '@/components/Newsletter/Newsletter';
+import { Footer } from '@/components/Footer/Footer';
 
 export default function Home() {
     const { products, loading, error, retry } = useRelatedProducts();
@@ -71,6 +73,9 @@ export default function Home() {
                     viewMoreLabel="Ver todos"
                 />
             </div>
+
+            <Newsletter />
+            <Footer />
 
             <ProductModal
                 product={selectedProduct}

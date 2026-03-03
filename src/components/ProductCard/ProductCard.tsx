@@ -1,4 +1,4 @@
-import type { Product } from '@app-types/Product';
+import type { Product } from '@/types/product.schema';
 import {
     formatCurrency,
     formatInstallments,
