@@ -1,17 +1,15 @@
 import { useState } from 'react';
+import { AppLayout } from '@/components/AppLayout/AppLayout';
 import { RelatedProductsSection } from '@/components/RelatedProductsSection/RelatedProductsSection';
 import { CategoryIcons } from '@/components/CategoryIcons/CategoryIcons';
-import { Header } from '@/components/Header/Header';
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner';
 import { ProductModal } from '@/components/ProductModal/ProductModal';
-import { TopBar } from '@/components/TopBar/TopBar';
 import { useRelatedProducts } from '@/hooks/useRelatedProducts';
 import type { Product } from '@/types/product.schema';
 import styles from './Home.module.scss';
 import { Partners } from '@/components/Partners/Partners';
 import { BrandsSection } from '@/components/BrandsSection/BrandsSection';
 import { Newsletter } from '@/components/Newsletter/Newsletter';
-import { Footer } from '@/components/Footer/Footer';
 
 export default function Home() {
     const { products, loading, error, retry } = useRelatedProducts();
@@ -28,15 +26,13 @@ export default function Home() {
     };
 
     return (
-        <main>
-            <TopBar />
-            <Header />
+        <AppLayout>
             <HeroBanner />
             <div className={styles.constrainedContent}>
                 <CategoryIcons />
 
                 <RelatedProductsSection
-                    sectionId="produtos"
+                    sectionId="produtos-relacionados"
                     products={products}
                     loading={loading}
                     onProductClick={handleProductClick}
@@ -48,7 +44,7 @@ export default function Home() {
                 <Partners />
 
                 <RelatedProductsSection
-                    sectionId="produtos"
+                    sectionId="produtos-destaque"
                     products={products}
                     loading={loading}
                     onProductClick={handleProductClick}
@@ -63,7 +59,7 @@ export default function Home() {
                 <BrandsSection />
 
                 <RelatedProductsSection
-                    sectionId="produtos"
+                    sectionId="produtos-novidades"
                     products={products}
                     loading={loading}
                     onProductClick={handleProductClick}
@@ -75,12 +71,11 @@ export default function Home() {
             </div>
 
             <Newsletter />
-            <Footer />
 
             <ProductModal
                 product={selectedProduct}
                 onClose={handleCloseProductModal}
             />
-        </main>
+        </AppLayout>
     );
 }

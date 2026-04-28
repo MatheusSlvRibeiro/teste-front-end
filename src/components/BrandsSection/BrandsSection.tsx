@@ -1,8 +1,16 @@
-import { SectionTitle } from '@components/SectionTitle/SectionTitle';
-import { Logo } from '@components/Logo/Logo';
+import { SectionTitle } from '@/components/ui/SectionTitle/SectionTitle';
+import { Logo } from '@/components/ui/Logo/Logo';
 import styles from './BrandsSection.module.scss';
 
 import logoEconverse from '@assets/logo-econverse.svg';
+
+const BRANDS = [
+    { id: 1, name: 'Econverse', src: logoEconverse, href: '/' },
+    { id: 2, name: 'Econverse', src: logoEconverse, href: '/' },
+    { id: 3, name: 'Econverse', src: logoEconverse, href: '/' },
+    { id: 4, name: 'Econverse', src: logoEconverse, href: '/' },
+    { id: 5, name: 'Econverse', src: logoEconverse, href: '/' },
+];
 
 export function BrandsSection() {
     return (
@@ -11,13 +19,13 @@ export function BrandsSection() {
                 <SectionTitle text="Navegue por marcas" />
 
                 <div className={styles.brands__list}>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <div className={styles.brands__logo} key={index}>
+                    {BRANDS.map((brand) => (
+                        <div className={styles.brands__logo} key={brand.id}>
                             <Logo
-                                href="/"
-                                ariaLabel="Econverse"
-                                src={logoEconverse}
-                                alt="Econverse"
+                                href={brand.href}
+                                ariaLabel={brand.name}
+                                src={brand.src}
+                                alt={brand.name}
                             />
                         </div>
                     ))}
