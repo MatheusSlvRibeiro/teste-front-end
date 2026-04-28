@@ -1,5 +1,6 @@
 import styles from './Partners.module.scss';
-import partnersImage from '../../assets/images/partners.png';
+import partnersPng from '../../assets/images/partners.png';
+import partnersWebp from '../../assets/images/partners.webp';
 
 export function Partners() {
     return (
@@ -13,12 +14,20 @@ export function Partners() {
                     {[1, 2].map((id) => (
                         <li key={id}>
                             <article className={styles.partners__card}>
-                                <img
-                                    src={partnersImage}
-                                    alt="Banner de parceiro"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
+                                <picture>
+                                    <source
+                                        srcSet={partnersWebp}
+                                        type="image/webp"
+                                    />
+                                    <img
+                                        src={partnersPng}
+                                        alt="Banner de parceiro"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width={634}
+                                        height={350}
+                                    />
+                                </picture>
 
                                 <div className={styles.partners__content}>
                                     <h3>Parceiros</h3>
