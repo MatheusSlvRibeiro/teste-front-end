@@ -4,6 +4,15 @@ Este projeto é a base para o teste de desenvolvedor Front-End da Econverse, uti
 
 ---
 
+## Instruções
+
+- Faça um fork desse projeto para a sua conta pessoal do GitHub.
+- Desenvolva a página conforme as **Especificações Técnicas**
+- Crie um README com as instruções para compilar, testar e rodar o projeto.
+- O link do repositório deverá ser enviado para o e-mail julia.gardiano@econverse.com.br com o título **Teste Vaga FrontEnd**
+
+---
+
 ## 🚀 Tecnologias Utilizadas
 
 - [React 19](https://react.dev/)
