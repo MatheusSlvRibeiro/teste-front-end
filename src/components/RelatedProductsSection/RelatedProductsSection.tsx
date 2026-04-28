@@ -1,7 +1,7 @@
 import type { Product } from '@/types/product.schema';
 import { CategoryTabs } from '../CategoryTabs/CategoryTabs';
 import { ProductCarousel } from '../ProductCarousel/ProductCarousel';
-import { SectionTitle } from '../SectionTitle/SectionTitle';
+import { SectionTitle } from '@components/ui/SectionTitle/SectionTitle';
 import styles from './RelatedProductsSection.module.scss';
 
 interface RelatedProductsSectionProps {

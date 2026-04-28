@@ -1,4 +1,4 @@
-import { Logo } from '@components/Logo/Logo';
+import { Logo } from '@components/ui/Logo/Logo';
 import logoEconverse from '@assets/logo-econverse.svg';
 import instagramIcon from '@assets/icons/social/instagram.svg';
 import facebookIcon from '@assets/icons/social/facebook.svg';

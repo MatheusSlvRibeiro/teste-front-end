@@ -1,7 +1,7 @@
 import { type MouseEvent, useEffect, useRef, useState } from 'react';
 import styles from './Header.module.scss';
-import { Logo } from '@components/Logo/Logo';
-import { SearchInput } from '@components/SearchInput/SearchInput';
+import { Logo } from '@components/ui/Logo/Logo';
+import { SearchInput } from '@components/ui/SearchInput/SearchInput';
 
 import logoEconverse from '@assets/logo-econverse.svg';
 import userIcon from '@assets/icons/user.svg';
