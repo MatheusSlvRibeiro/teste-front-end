@@ -1,0 +1,106 @@
+{
+  "project": "teste-front-end",
+  "features": [
+    {
+      "id": "F001",
+      "title": "Buscar e listar produtos do JSON remoto",
+      "criteria": [
+        "Ao carregar a página, a vitrine faz fetch do endpoint JSON de produtos e renderiza um card para cada produto retornado",
+        "Cada card exibe ao menos nome, imagem e preço do produto, conforme o layout do Figma",
+        "Se o fetch falhar, a página exibe uma mensagem de erro visível em vez de tela em branco"
+      ],
+      "linked_issues": [4, 5, 6, 7, 13, 17],
+      "implemented": true,
+      "verified": false,
+      "notes": "Implementado em feat/design-system-base (branch local, ainda não commitada/PR aberta)."
+    },
+    {
+      "id": "F002",
+      "title": "Modal de detalhes do produto",
+      "criteria": [
+        "Clicar em um card abre um modal exibindo as informações principais daquele produto específico (nome, imagem, descrição, preço)",
+        "O modal pode ser fechado clicando fora dele, em um botão de fechar, ou pressionando Esc",
+        "Abrir o modal para produtos diferentes exibe os dados corretos de cada um, sem vazamento de estado entre produtos"
+      ],
+      "linked_issues": [8, 9, 10, 13, 15, 17],
+      "implemented": true,
+      "verified": false,
+      "notes": "Implementado em feat/design-system-base (branch local, ainda não commitada/PR aberta)."
+    },
+    {
+      "id": "F003",
+      "title": "Layout fiel ao Figma, sem lib de UI",
+      "criteria": [
+        "Cores, fontes e tamanhos de fonte da vitrine e do modal conferem com as especificações do Figma",
+        "Nenhuma biblioteca de UI (Bootstrap, Foundation ou similar) é usada no projeto",
+        "O layout é construído com HTML semântico (landmarks como header/main/section, não divs genéricas para tudo)"
+      ],
+      "linked_issues": [3, 11, 12, 15, 17],
+      "implemented": false,
+      "verified": false,
+      "notes": ""
+    },
+    {
+      "id": "F004",
+      "title": "Alternância entre API real e mock via env var",
+      "criteria": [
+        "Com VITE_USE_MOCK_API=false (ou ausente), a vitrine busca produtos de VITE_PRODUCTS_API_URL",
+        "Com VITE_USE_MOCK_API=true, a vitrine exibe produtos de um mock local, sem fazer nenhuma chamada de rede",
+        "Trocar entre os dois modos não exige alterar nenhum componente que consome a lista de produtos — só a env var"
+      ],
+      "linked_issues": [5, 13, 17],
+      "implemented": true,
+      "verified": false,
+      "notes": "Implementado em feat/design-system-base (branch local, ainda não commitada/PR aberta)."
+    },
+    {
+      "id": "F005",
+      "title": "Header com avisos, busca e ícones (visual)",
+      "criteria": [
+        "Header exibe a barra de avisos com os três textos do Figma (compra segura, frete grátis acima de R$200, parcele suas compras)",
+        "Header exibe um campo de busca e os 4 ícones (trocar, wishlist, usuário, carrinho); nenhum executa ação real (sem navegação, sem estado)",
+        "Nav de categorias exibe os 7 itens do Figma (Todas categorias, Supermercado, Livros, Moda, Lançamentos, Ofertas do dia, Assinatura) com \"Ofertas do dia\" marcado como ativo"
+      ],
+      "linked_issues": [],
+      "implemented": false,
+      "verified": false,
+      "notes": ""
+    },
+    {
+      "id": "F006",
+      "title": "Hero banner e categorias em destaque",
+      "criteria": [
+        "Hero exibe o headline \"Venha conhecer nossas promoções\", o destaque \"50% Off nos produtos\" e o botão \"Ver produto\"",
+        "Grid de categorias exibe os 7 ícones do Figma (Tecnologia, Supermercado, Bebidas, Ferramentas, Saúde, Esportes e Fitness, Moda) com Tecnologia marcada como ativa"
+      ],
+      "linked_issues": [],
+      "implemented": false,
+      "verified": false,
+      "notes": ""
+    },
+    {
+      "id": "F007",
+      "title": "Parceiros e navegue por marcas",
+      "criteria": [
+        "Seção \"Parceiros\" exibe pelo menos 2 banners, cada um com título, texto e botão \"CONFIRA\"",
+        "Seção \"Navegue por marcas\" exibe um carrossel com pelo menos 5 logos"
+      ],
+      "linked_issues": [],
+      "implemented": false,
+      "verified": false,
+      "notes": ""
+    },
+    {
+      "id": "F008",
+      "title": "Newsletter e footer",
+      "criteria": [
+        "Newsletter exibe título, campos de nome e e-mail, checkbox de termos e botão \"INSCREVER\" — sem submissão real (não faz requisição)",
+        "Footer exibe logo, descrição, as três colunas de links (Institucional, Ajuda, Termos) e ícones sociais"
+      ],
+      "linked_issues": [],
+      "implemented": false,
+      "verified": false,
+      "notes": ""
+    }
+  ]
+}
