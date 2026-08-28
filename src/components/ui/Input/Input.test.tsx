@@ -31,4 +31,24 @@ describe('Input', () => {
 
     expect(screen.getByLabelText('Nome')).toBeInTheDocument()
   })
+
+  it('exibe a mensagem de erro e marca aria-invalid quando error é passado', () => {
+    render(<Input id="email" aria-label="E-mail" error="Informe um e-mail válido" />)
+
+    expect(screen.getByText('Informe um e-mail válido')).toBeInTheDocument()
+    expect(screen.getByLabelText('E-mail')).toHaveAttribute('aria-invalid', 'true')
+  })
+
+  it('não renderiza mensagem de erro nem aria-invalid quando error está ausente', () => {
+    render(<Input aria-label="Nome" />)
+
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    expect(screen.getByLabelText('Nome')).not.toHaveAttribute('aria-invalid')
+  })
+
+  it('não quebra quando error é passado sem id', () => {
+    render(<Input aria-label="Nome" error="Campo obrigatório" />)
+
+    expect(screen.getByText('Campo obrigatório')).toBeInTheDocument()
+  })
 })

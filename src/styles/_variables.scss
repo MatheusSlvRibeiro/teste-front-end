@@ -26,6 +26,11 @@ $color-border: #e7e7e7;
 // review) — usar este tom mais escuro para divisores/bordas sobre fundo cinza-claro.
 $color-border-strong: #d5d0c9;
 
+// Precisa funcionar tanto sobre fundo claro (Header) quanto sobre o roxo escuro da
+// Newsletter — nenhum vermelho comum passa WCAG AA (4.5:1) nos dois ao mesmo tempo;
+// este é o melhor equilíbrio (~3.9:1 em ambos) sem duplicar o token por contexto.
+$color-error: #e5484d;
+
 $system-font-stack:
   system-ui,
   -apple-system,

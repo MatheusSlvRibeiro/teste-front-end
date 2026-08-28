@@ -48,4 +48,46 @@ describe('Newsletter', () => {
     expect(captured.event).not.toBeNull()
     expect(captured.event?.defaultPrevented).toBe(true)
   })
+
+  it('exibe mensagens de erro para nome, e-mail e termos ao submeter vazio', async () => {
+    const user = userEvent.setup()
+    render(<Newsletter />)
+
+    await user.click(screen.getByRole('button', { name: 'INSCREVER' }))
+
+    expect(await screen.findByText('Informe seu nome')).toBeInTheDocument()
+    expect(screen.getByText('Informe um e-mail válido')).toBeInTheDocument()
+    expect(screen.getByText('Você precisa aceitar os termos e condições')).toBeInTheDocument()
+  })
+
+  it('exibe erro de e-mail inválido sem repetir o erro de nome já corrigido', async () => {
+    const user = userEvent.setup()
+    render(<Newsletter />)
+
+    await user.type(screen.getByLabelText('Digite seu nome'), 'Maria')
+    await user.type(screen.getByLabelText('Digite seu e-mail'), 'nao-e-email')
+    await user.click(screen.getByRole('checkbox', { name: 'Aceito os termos e condições' }))
+    await user.click(screen.getByRole('button', { name: 'INSCREVER' }))
+
+    expect(await screen.findByText('Informe um e-mail válido')).toBeInTheDocument()
+    expect(screen.queryByText('Informe seu nome')).not.toBeInTheDocument()
+  })
+
+  it('limpa o formulário sem exibir erros quando os dados são válidos', async () => {
+    const user = userEvent.setup()
+    render(<Newsletter />)
+
+    const nameInput = screen.getByLabelText('Digite seu nome')
+    const emailInput = screen.getByLabelText('Digite seu e-mail')
+
+    await user.type(nameInput, 'Maria')
+    await user.type(emailInput, 'maria@example.com')
+    await user.click(screen.getByRole('checkbox', { name: 'Aceito os termos e condições' }))
+    await user.click(screen.getByRole('button', { name: 'INSCREVER' }))
+
+    await screen.findByRole('checkbox', { name: 'Aceito os termos e condições', checked: false })
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    expect(nameInput).toHaveValue('')
+    expect(emailInput).toHaveValue('')
+  })
 })

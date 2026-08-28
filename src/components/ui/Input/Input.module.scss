@@ -12,3 +12,11 @@
     outline: none;
   }
 }
+
+.input__error {
+  flex: 1 0 100%;
+  width: 100%;
+  color: $color-error;
+  font-size: $font-size-sm;
+  margin-top: $space-1;
+}

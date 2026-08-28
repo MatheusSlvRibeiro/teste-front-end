@@ -69,6 +69,7 @@
 
   &__terms {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: $space-2;
   }
@@ -78,6 +79,12 @@
   }
 
   &__termsLabel {
+    font-size: $font-size-sm;
+  }
+
+  &__termsError {
+    flex-basis: 100%;
+    color: $color-error;
     font-size: $font-size-sm;
   }
 }

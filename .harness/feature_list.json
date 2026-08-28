@@ -97,10 +97,10 @@
         "Newsletter exibe título, campos de nome e e-mail, checkbox de termos e botão \"INSCREVER\" — sem submissão real (não faz requisição)",
         "Footer exibe logo, descrição, as três colunas de links (Institucional, Ajuda, Termos) e ícones sociais"
       ],
-      "linked_issues": [],
-      "implemented": false,
+      "linked_issues": [26, 27],
+      "implemented": true,
       "verified": false,
-      "notes": ""
+      "notes": "Newsletter com validação client-side (react-hook-form + zod) e mensagens de erro; Footer implementado em PR anterior."
     }
   ]
 }
