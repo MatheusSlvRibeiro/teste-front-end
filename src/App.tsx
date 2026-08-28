@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { BrandCarousel } from '@/components/BrandCarousel/BrandCarousel'
 import { CategoryGrid } from '@/components/CategoryGrid/CategoryGrid'
 import { Header } from '@/components/Header/Header'
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner'
 import { NavBar } from '@/components/NavBar/NavBar'
+import { PartnerBanner } from '@/components/PartnerBanner/PartnerBanner'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ProductDetailModal } from '@/components/ProductDetailModal/ProductDetailModal'
 import { getProducts } from '@/lib/api/products'
@@ -40,13 +42,21 @@ function App() {
     <>
       <Header />
       <NavBar />
-      <HeroBanner />
-      <CategoryGrid />
       <main>
+        <HeroBanner />
+        <CategoryGrid />
+        <div className={styles.partners}>
+          <PartnerBanner description="Descontos exclusivos com nossos parceiros." />
+          <PartnerBanner
+            title="Rede parceira"
+            description="Frete grátis em compras selecionadas na rede parceira."
+          />
+        </div>
+        <BrandCarousel />
         <section aria-labelledby="vitrine-heading" className={styles.vitrine}>
-          <h1 id="vitrine-heading" className={styles.vitrine__heading}>
+          <h2 id="vitrine-heading" className={styles.vitrine__heading}>
             Todos os produtos
-          </h1>
+          </h2>
 
           {state.status === 'loading' && <p role="status">Carregando produtos…</p>}
           {state.status === 'error' && <p role="alert">{state.message}</p>}
