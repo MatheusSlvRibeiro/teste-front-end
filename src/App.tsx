@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Header } from '@/components/Header/Header'
+import { NavBar } from '@/components/NavBar/NavBar'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ProductDetailModal } from '@/components/ProductDetailModal/ProductDetailModal'
 import { getProducts } from '@/lib/api/products'
@@ -34,14 +36,13 @@ function App() {
 
   return (
     <>
-      <header className={styles.header}>
-        <h1 className={styles.header__title}>Vitrine de produtos</h1>
-      </header>
+      <Header />
+      <NavBar />
       <main>
         <section aria-labelledby="vitrine-heading" className={styles.vitrine}>
-          <h2 id="vitrine-heading" className={styles.vitrine__heading}>
+          <h1 id="vitrine-heading" className={styles.vitrine__heading}>
             Todos os produtos
-          </h2>
+          </h1>
 
           {state.status === 'loading' && <p role="status">Carregando produtos…</p>}
           {state.status === 'error' && <p role="alert">{state.message}</p>}

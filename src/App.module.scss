@@ -1,16 +1,3 @@
-.header {
-  display: flex;
-  align-items: center;
-  padding: $space-4 $space-4;
-  border-bottom: 1px solid $color-border;
-
-  &__title {
-    color: $color-primary;
-    font-size: $font-size-xl;
-    font-weight: 700;
-  }
-}
-
 .vitrine {
   padding: $space-4;
 
