@@ -61,10 +61,10 @@
                 "Header exibe um campo de busca e os 4 ícones (trocar, wishlist, usuário, carrinho); nenhum executa ação real (sem navegação, sem estado)",
                 "Nav de categorias exibe os 7 itens do Figma (Todas categorias, Supermercado, Livros, Moda, Lançamentos, Ofertas do dia, Assinatura) com \"Ofertas do dia\" marcado como ativo"
             ],
-            "linked_issues": [],
-            "implemented": false,
+            "linked_issues": [20, 21],
+            "implemented": true,
             "verified": false,
-            "notes": ""
+            "notes": "Inclui variante responsiva da navbar (hambúrguer + logo central + dropdown de perfil) abaixo do breakpoint tablet."
         },
         {
             "id": "F006",
