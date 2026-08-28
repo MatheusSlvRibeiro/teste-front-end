@@ -1,4 +1,6 @@
 .navbar {
+    @include content-container;
+
     border-top: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
 
@@ -83,8 +85,6 @@
     }
 
     &__list {
-        @include content-container;
-
         display: none;
         flex-direction: column;
         gap: $space-3;
@@ -119,6 +119,10 @@
         cursor: pointer;
 
         @include focus-ring;
+
+        &:hover {
+            color: $color-primary;
+        }
 
         &--active {
             color: $color-primary;
