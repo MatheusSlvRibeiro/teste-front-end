@@ -109,4 +109,39 @@ describe('NavBar', () => {
         await user.click(document.body)
         expect(screen.queryByRole('menu')).not.toBeInTheDocument()
     })
+
+    it('fecha o menu mobile ao pressionar Esc', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        const menuButton = screen.getByRole('button', { name: 'Abrir menu' })
+        await user.click(menuButton)
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+
+        await user.keyboard('{Escape}')
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('fecha o menu mobile ao clicar no overlay', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        const menuButton = screen.getByRole('button', { name: 'Abrir menu' })
+        await user.click(menuButton)
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+
+        await user.click(screen.getByTestId('navbar-overlay'))
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('fecha o menu mobile ao clicar em um item de categoria', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        const menuButton = screen.getByRole('button', { name: 'Abrir menu' })
+        await user.click(menuButton)
+
+        await user.click(screen.getByRole('button', { name: 'Moda' }))
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    })
 })

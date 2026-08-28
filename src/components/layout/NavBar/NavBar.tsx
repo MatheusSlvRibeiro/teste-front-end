@@ -65,6 +65,17 @@ export function NavBar() {
         }
     }, [isProfileOpen])
 
+    useEffect(() => {
+        if (!isMenuOpen) return
+
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.key === 'Escape') setIsMenuOpen(false)
+        }
+
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown)
+    }, [isMenuOpen])
+
     return (
         <nav className={styles.navbar} aria-label="Categorias">
             <div className={styles.navbar__mobileBar}>
@@ -105,25 +116,35 @@ export function NavBar() {
                         <UserIcon />
                     </button>
 
-                    {isProfileOpen && (
-                        <ul className={styles.navbar__profileMenu} role="menu">
-                            {PROFILE_MENU_ITEMS.map(({ label, icon: Icon }) => (
-                                <li key={label} role="none">
-                                    <button
-                                        type="button"
-                                        role="menuitem"
-                                        className={styles.navbar__profileMenuItem}
-                                        onClick={() => setIsProfileOpen(false)}
-                                    >
-                                        <Icon size={16} />
-                                        {label}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+                    <ul
+                        className={`${styles.navbar__profileMenu} ${isProfileOpen ? styles['navbar__profileMenu--open'] : ''}`.trim()}
+                        role="menu"
+                        aria-hidden={!isProfileOpen}
+                    >
+                        {PROFILE_MENU_ITEMS.map(({ label, icon: Icon }) => (
+                            <li key={label} role="none">
+                                <button
+                                    type="button"
+                                    role="menuitem"
+                                    tabIndex={isProfileOpen ? 0 : -1}
+                                    className={styles.navbar__profileMenuItem}
+                                    onClick={() => setIsProfileOpen(false)}
+                                >
+                                    <Icon size={16} />
+                                    {label}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
+
+            <div
+                className={`${styles.navbar__overlay} ${isMenuOpen ? styles['navbar__overlay--open'] : ''}`.trim()}
+                aria-hidden="true"
+                data-testid="navbar-overlay"
+                onClick={() => setIsMenuOpen(false)}
+            />
 
             <ul
                 id={listId}
@@ -136,6 +157,7 @@ export function NavBar() {
                             type="button"
                             className={`${styles.navbar__item} ${active ? styles['navbar__item--active'] : ''}`.trim()}
                             aria-current={active ? 'page' : undefined}
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             {hasIcon && <KingIcon size={14} />}
                             {label}
