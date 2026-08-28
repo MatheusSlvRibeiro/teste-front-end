@@ -18,9 +18,13 @@ $color-text-muted: #676767;
 $color-text-disabled: #9f9f9f;
 
 $color-surface: #ffffff;
+$color-surface-muted: #f7f5f2;
 $color-background: #ffffff;
 $color-background-dark: $color-brand-dark;
 $color-border: #e7e7e7;
+// Contra $color-surface-muted, $color-border quase desaparece (1.14:1 medido em code
+// review) — usar este tom mais escuro para divisores/bordas sobre fundo cinza-claro.
+$color-border-strong: #d5d0c9;
 
 $system-font-stack:
   system-ui,

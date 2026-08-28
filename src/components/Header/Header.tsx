@@ -18,7 +18,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header__announcements}>
-        <ul className={styles.header__announcementsList}>
+        <ul className={styles.header__announcementsList} role="list">
           {ANNOUNCEMENTS.map((text) => (
             <li key={text}>{text}</li>
           ))}

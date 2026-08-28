@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { BrandCarousel } from '@/components/BrandCarousel/BrandCarousel'
 import { CategoryGrid } from '@/components/CategoryGrid/CategoryGrid'
+import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner'
 import { NavBar } from '@/components/NavBar/NavBar'
+import { Newsletter } from '@/components/Newsletter/Newsletter'
 import { PartnerBanner } from '@/components/PartnerBanner/PartnerBanner'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ProductDetailModal } from '@/components/ProductDetailModal/ProductDetailModal'
@@ -72,7 +74,9 @@ function App() {
             </div>
           )}
         </section>
+        <Newsletter />
       </main>
+      <Footer />
       <ProductDetailModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
     </>
   )

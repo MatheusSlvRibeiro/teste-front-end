@@ -1,0 +1,112 @@
+.footer {
+  background: $color-surface-muted;
+
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-5;
+    padding: $space-5 $space-4;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    max-width: 280px;
+  }
+
+  &__logo {
+    height: 42px;
+    width: auto;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__divider {
+    display: none;
+    width: 1px;
+    align-self: stretch;
+    background: $color-border-strong;
+
+    @include respond-to(desktop) {
+      display: block;
+    }
+  }
+
+  &__columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-5;
+    flex: 1;
+
+    @include respond-to(tablet) {
+      gap: $space-6;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__columnTitle {
+    font-family: $font-family-heading;
+    font-size: $font-size-base;
+    font-weight: 700;
+  }
+
+  &__columnList {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    list-style: none;
+  }
+
+  &__columnLink {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+    text-decoration: none;
+
+    @include focus-ring;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    list-style: none;
+  }
+
+  &__socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+
+    @include focus-ring;
+
+    &:hover {
+      background: $color-border-strong;
+    }
+  }
+
+  &__legal {
+    padding: $space-3 $space-4;
+    border-top: 1px solid $color-border-strong;
+    background: $color-surface;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+    text-align: center;
+  }
+}

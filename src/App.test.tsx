@@ -33,12 +33,19 @@ describe('App', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Todos os produtos' })).toBeInTheDocument()
   })
 
-  it('usa landmarks semânticos para header, main e a seção de produtos', () => {
+  it('usa landmarks semânticos para header, main, rodapé e a seção de produtos', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
     render(<App />)
     expect(screen.getByRole('banner')).toBeInTheDocument()
     expect(screen.getByRole('main')).toBeInTheDocument()
     expect(screen.getByRole('region', { name: 'Todos os produtos' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('region', { name: 'Inscreva-se na nossa newsletter' }),
+    ).toBeInTheDocument()
+
+    const footer = screen.getByRole('contentinfo')
+    expect(footer).toBeInTheDocument()
+    expect(screen.getByRole('main')).not.toContainElement(footer)
   })
 
   it('mostra um indicador de carregamento enquanto os produtos não chegam', () => {
