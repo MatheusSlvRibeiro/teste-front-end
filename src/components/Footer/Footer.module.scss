@@ -90,19 +90,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: $radius-full;
-    background: $color-border-strong;
 
     @include focus-ring;
 
     &:hover {
-      background: $color-primary;
-
-      img {
-        filter: brightness(0) invert(1);
-      }
+      background: $color-border-strong;
     }
   }
 
