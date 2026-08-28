@@ -2,7 +2,10 @@
   border-bottom: 1px solid $color-border;
 
   &__list {
+    @include content-container;
+
     display: flex;
+    justify-content: space-between;
     gap: $space-4;
     list-style: none;
     padding: $space-2 $space-4;

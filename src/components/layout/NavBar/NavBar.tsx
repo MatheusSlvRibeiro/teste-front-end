@@ -1,4 +1,4 @@
-import { RepeatIcon } from '@/components/icons/RepeatIcon'
+import { KingIcon } from '@/components/icons/KingIcon'
 import styles from './NavBar.module.scss'
 
 interface NavItem {
@@ -28,7 +28,7 @@ export function NavBar() {
               className={`${styles.navbar__item} ${active ? styles['navbar__item--active'] : ''}`.trim()}
               aria-current={active ? 'page' : undefined}
             >
-              {hasIcon && <RepeatIcon size={14} />}
+              {hasIcon && <KingIcon size={14} />}
               {label}
             </button>
           </li>

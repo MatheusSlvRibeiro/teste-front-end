@@ -7,9 +7,11 @@ describe('Header', () => {
   it('exibe os três textos da barra de avisos', () => {
     render(<Header />)
 
-    expect(screen.getByText('Compra 100% segura')).toBeInTheDocument()
-    expect(screen.getByText('Frete grátis acima de R$ 200')).toBeInTheDocument()
-    expect(screen.getByText('Parcele suas compras')).toBeInTheDocument()
+    const byFullText = (text: string) => screen.getByText((_, node) => node?.textContent === text)
+
+    expect(byFullText('Compra 100% segura')).toBeInTheDocument()
+    expect(byFullText('Frete grátis acima de R$ 200')).toBeInTheDocument()
+    expect(byFullText('Parcele suas compras')).toBeInTheDocument()
   })
 
   it('exibe o campo de busca rotulado e os 4 ícones de ação', () => {

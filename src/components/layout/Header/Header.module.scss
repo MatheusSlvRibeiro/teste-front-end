@@ -1,31 +1,44 @@
 .header {
   &__announcements {
-    background: $color-background-dark;
-    color: $color-surface;
+    background: $color-surface;
+    border-bottom: 1px solid $color-border;
   }
 
   &__announcementsList {
+    @include content-container;
+
     display: flex;
-    justify-content: center;
-    gap: $space-4;
+    flex-wrap: wrap;
+    gap: $space-5;
     list-style: none;
-    padding: $space-1 $space-3;
+    padding: $space-2 $space-4;
     font-size: $font-size-sm;
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-1;
+      color: $color-text-disabled;
+    }
+  }
+
+  &__announcementHighlight {
+    color: $color-primary;
+    font-weight: 700;
   }
 
   &__main {
+    @include content-container;
+
     display: flex;
     align-items: center;
     gap: $space-4;
     padding: $space-3 $space-4;
-    border-bottom: 1px solid $color-border;
   }
 
   &__logo {
-    color: $color-primary;
-    font-size: $font-size-lg;
-    font-weight: 700;
-    white-space: nowrap;
+    height: 36px;
+    width: auto;
   }
 
   &__search {
@@ -33,8 +46,8 @@
     align-items: center;
     flex: 1;
     max-width: 640px;
-    border: 1px solid $color-border;
-    border-radius: $radius-button;
+    border-radius: 999px;
+    background: $color-surface-muted;
     overflow: hidden;
 
     &:focus-within {
@@ -49,19 +62,7 @@
 
   &__searchInput {
     flex: 1;
-    border: none;
     padding: $space-2 $space-3;
-    font-size: $font-size-base;
-    font-family: inherit;
-    color: $color-text;
-
-    &::placeholder {
-      color: $color-text-muted;
-    }
-
-    &:focus-visible {
-      outline: none;
-    }
   }
 
   &__searchButton {
@@ -70,20 +71,20 @@
     justify-content: center;
     padding: $space-2 $space-3;
     border: none;
-    background: $color-primary;
-    color: $color-surface;
+    background: transparent;
+    color: $color-text-disabled;
     cursor: pointer;
 
     @include focus-ring;
 
     &:hover {
-      background: $color-primary-hover;
+      color: $color-primary;
     }
   }
 
   &__actions {
     display: flex;
-    gap: $space-2;
+    gap: $space-4;
     margin-left: auto;
   }
 
@@ -91,18 +92,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
     border: none;
-    border-radius: $radius-button;
     background: transparent;
-    color: $color-text;
+    color: $color-text-muted;
     cursor: pointer;
 
     @include focus-ring;
 
     &:hover {
-      background: $color-border;
+      color: $color-primary;
     }
   }
 }
