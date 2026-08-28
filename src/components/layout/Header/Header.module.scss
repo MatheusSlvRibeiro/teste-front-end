@@ -1,106 +1,116 @@
 .header {
-  &__announcements {
-    background: $color-surface;
-    border-bottom: 1px solid $color-border;
-  }
+    &__announcements {
+        display: none;
+        background: $color-surface;
+        border-bottom: 1px solid $color-border;
 
-  &__announcementsList {
-    @include content-container;
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-5;
-    list-style: none;
-    padding: $space-2 $space-4;
-    font-size: $font-size-sm;
-
-    li {
-      display: inline-flex;
-      align-items: center;
-      gap: $space-1;
-      color: $color-text-disabled;
+        @include respond-to(tablet) {
+            display: block;
+        }
     }
-  }
 
-  &__announcementHighlight {
-    color: $color-primary;
-    font-weight: 700;
-  }
+    &__announcementsList {
+        @include content-container;
 
-  &__main {
-    @include content-container;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-5;
+        list-style: none;
+        padding: $space-2 $space-4;
+        font-size: $font-size-sm;
 
-    display: flex;
-    align-items: center;
-    gap: $space-4;
-    padding: $space-3 $space-4;
-  }
-
-  &__logo {
-    height: 36px;
-    width: auto;
-  }
-
-  &__search {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    max-width: 640px;
-    border-radius: 999px;
-    background: $color-surface-muted;
-    overflow: hidden;
-
-    &:focus-within {
-      outline: 2px solid $color-primary;
-      outline-offset: 2px;
+        li {
+            display: inline-flex;
+            align-items: center;
+            gap: $space-1;
+            color: $color-text-disabled;
+        }
     }
-  }
 
-  &__searchLabel {
-    @include visually-hidden;
-  }
-
-  &__searchInput {
-    flex: 1;
-    padding: $space-2 $space-3;
-  }
-
-  &__searchButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: $space-2 $space-3;
-    border: none;
-    background: transparent;
-    color: $color-text-disabled;
-    cursor: pointer;
-
-    @include focus-ring;
-
-    &:hover {
-      color: $color-primary;
+    &__announcementHighlight {
+        color: $color-primary;
+        font-weight: 700;
     }
-  }
 
-  &__actions {
-    display: flex;
-    gap: $space-4;
-    margin-left: auto;
-  }
+    &__main {
+        @include content-container;
 
-  &__actionButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    color: $color-text-muted;
-    cursor: pointer;
+        display: none;
+        align-items: center;
+        gap: $space-4;
+        padding: $space-3 $space-4;
 
-    @include focus-ring;
-
-    &:hover {
-      color: $color-primary;
+        @include respond-to(tablet) {
+            display: flex;
+        }
     }
-  }
+
+    &__logo {
+        height: 36px;
+        width: auto;
+    }
+
+    &__search {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-width: 640px;
+        margin-inline: auto;
+        border-radius: 999px;
+        background: $color-surface-muted;
+        overflow: hidden;
+
+        &:focus-within {
+            outline: 2px solid $color-primary;
+            outline-offset: 2px;
+        }
+    }
+
+    &__searchLabel {
+        @include visually-hidden;
+    }
+
+    &__searchInput {
+        flex: 1;
+        padding: $space-2 $space-3;
+    }
+
+    &__searchButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $space-2 $space-3;
+        border: none;
+        background: transparent;
+        color: $color-text-disabled;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-4;
+    }
+
+    &__actionButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: $color-text-muted;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
 }
