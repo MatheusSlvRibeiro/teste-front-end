@@ -112,7 +112,9 @@ export function Footer() {
             </div>
 
             <div className={styles.footer__legal}>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p className={styles.footer__legalInner}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
             </div>
         </footer>
     )

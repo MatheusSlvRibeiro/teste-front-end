@@ -110,4 +110,8 @@
         font-size: $font-size-sm;
         text-align: center;
     }
+
+    &__legalInner {
+        @include content-container;
+    }
 }

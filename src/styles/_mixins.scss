@@ -14,7 +14,7 @@
     }
 }
 
-// Limita a largura do conteúdo a 1400px sem afetar o background do elemento que a
+// Limita a largura do conteúdo a $content-max-width sem afetar o background do elemento que a
 // contém — aplicar num wrapper interno quando o elemento pai tiver uma cor de fundo
 // própria que deva continuar ocupando a largura total da tela.
 @mixin content-container {
