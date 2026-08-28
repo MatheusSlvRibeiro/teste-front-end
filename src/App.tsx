@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { CategoryGrid } from '@/components/CategoryGrid/CategoryGrid'
 import { Header } from '@/components/Header/Header'
+import { HeroBanner } from '@/components/HeroBanner/HeroBanner'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ProductDetailModal } from '@/components/ProductDetailModal/ProductDetailModal'
@@ -38,6 +40,8 @@ function App() {
     <>
       <Header />
       <NavBar />
+      <HeroBanner />
+      <CategoryGrid />
       <main>
         <section aria-labelledby="vitrine-heading" className={styles.vitrine}>
           <h1 id="vitrine-heading" className={styles.vitrine__heading}>

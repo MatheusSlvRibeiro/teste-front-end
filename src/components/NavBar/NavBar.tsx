@@ -20,7 +20,7 @@ const NAV_ITEMS: NavItem[] = [
 export function NavBar() {
   return (
     <nav className={styles.navbar} aria-label="Categorias">
-      <ul className={styles.navbar__list}>
+      <ul className={styles.navbar__list} role="list">
         {NAV_ITEMS.map(({ label, active, hasIcon }) => (
           <li key={label}>
             <button
