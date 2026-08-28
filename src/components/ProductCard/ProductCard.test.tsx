@@ -5,43 +5,43 @@ import type { Product } from '@/schemas/product'
 import { ProductCard } from './ProductCard'
 
 const product: Product = {
-  productName: 'Iphone 11 PRO MAX BRANCO',
-  descriptionShort: 'Iphone 11 PRO MAX BRANCO, 128GB',
-  photo: 'https://example.com/foto.png',
-  price: 15000,
+    productName: 'Iphone 11 PRO MAX BRANCO',
+    descriptionShort: 'Iphone 11 PRO MAX BRANCO, 128GB',
+    photo: 'https://example.com/foto.png',
+    price: 15000,
 }
 
 describe('ProductCard', () => {
-  it('renderiza nome, imagem, descrição e preço do produto', () => {
-    render(<ProductCard product={product} onSelect={vi.fn()} />)
+    it('renderiza nome, imagem, descrição e preço do produto', () => {
+        render(<ProductCard product={product} onSelect={vi.fn()} />)
 
-    expect(screen.getByRole('img', { name: product.productName })).toHaveAttribute(
-      'src',
-      product.photo,
-    )
-    expect(screen.getByText(product.descriptionShort)).toBeInTheDocument()
-    expect(screen.getByText('R$ 15.000,00')).toBeInTheDocument()
-  })
+        expect(screen.getByRole('img', { name: product.productName })).toHaveAttribute(
+            'src',
+            product.photo,
+        )
+        expect(screen.getByText(product.descriptionShort)).toBeInTheDocument()
+        expect(screen.getByText('R$ 15.000,00')).toBeInTheDocument()
+    })
 
-  it('formata um preço diferente para outro produto', () => {
-    render(<ProductCard product={{ ...product, price: 520 }} onSelect={vi.fn()} />)
+    it('formata um preço diferente para outro produto', () => {
+        render(<ProductCard product={{ ...product, price: 520 }} onSelect={vi.fn()} />)
 
-    expect(screen.getByText('R$ 520,00')).toBeInTheDocument()
-  })
+        expect(screen.getByText('R$ 520,00')).toBeInTheDocument()
+    })
 
-  it('chama onSelect com o produto ao clicar no card', async () => {
-    const handleSelect = vi.fn()
-    render(<ProductCard product={product} onSelect={handleSelect} />)
+    it('chama onSelect com o produto ao clicar no card', async () => {
+        const handleSelect = vi.fn()
+        render(<ProductCard product={product} onSelect={handleSelect} />)
 
-    await userEvent.click(screen.getByRole('button'))
+        await userEvent.click(screen.getByRole('button'))
 
-    expect(handleSelect).toHaveBeenCalledOnce()
-    expect(handleSelect).toHaveBeenCalledWith(product)
-  })
+        expect(handleSelect).toHaveBeenCalledOnce()
+        expect(handleSelect).toHaveBeenCalledWith(product)
+    })
 
-  it('não quebra com preço zero', () => {
-    render(<ProductCard product={{ ...product, price: 0 }} onSelect={vi.fn()} />)
+    it('não quebra com preço zero', () => {
+        render(<ProductCard product={{ ...product, price: 0 }} onSelect={vi.fn()} />)
 
-    expect(screen.getByText('R$ 0,00')).toBeInTheDocument()
-  })
+        expect(screen.getByText('R$ 0,00')).toBeInTheDocument()
+    })
 })

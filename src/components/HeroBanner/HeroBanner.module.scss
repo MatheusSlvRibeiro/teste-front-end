@@ -2,41 +2,41 @@
 // _variables.scss); usamos um gradiente com os tokens de marca como placeholder até o
 // dev extrair a imagem exata (M01-S09-T01 — revisão pixel-perfect).
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 280px;
-  padding: $space-5 $space-4;
-  background: linear-gradient(135deg, $color-background-dark 0%, $color-primary 100%);
-  text-align: center;
-
-  &__content {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: $space-2;
-    max-width: 480px;
-  }
+    justify-content: center;
+    min-height: 280px;
+    padding: $space-5 $space-4;
+    background: linear-gradient(135deg, $color-background-dark 0%, $color-primary 100%);
+    text-align: center;
 
-  &__headline {
-    color: $color-surface;
-    font-size: $font-size-xl;
-    font-weight: 700;
-  }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-2;
+        max-width: 480px;
+    }
 
-  &__discount {
-    color: $color-surface;
-    font-size: $font-size-lg;
-  }
+    &__headline {
+        color: $color-surface;
+        font-size: $font-size-xl;
+        font-weight: 700;
+    }
 
-  &__discountHighlight {
-    color: $color-accent;
-    font-weight: 700;
-  }
+    &__discount {
+        color: $color-surface;
+        font-size: $font-size-lg;
+    }
 
-  &__cta {
-    margin-top: $space-3;
-    padding: $space-2 $space-5;
-    font-size: $font-size-base;
-  }
+    &__discountHighlight {
+        color: $color-accent;
+        font-weight: 700;
+    }
+
+    &__cta {
+        margin-top: $space-3;
+        padding: $space-2 $space-5;
+        font-size: $font-size-base;
+    }
 }

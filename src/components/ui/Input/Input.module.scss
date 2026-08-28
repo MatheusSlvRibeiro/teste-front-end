@@ -1,22 +1,22 @@
 .input {
-  border: none;
-  background: transparent;
-  font: inherit;
-  color: $color-text;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: $color-text;
 
-  &::placeholder {
-    color: $color-text-muted;
-  }
+    &::placeholder {
+        color: $color-text-muted;
+    }
 
-  &:focus-visible {
-    outline: none;
-  }
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 .input__error {
-  flex: 1 0 100%;
-  width: 100%;
-  color: $color-error;
-  font-size: $font-size-sm;
-  margin-top: $space-1;
+    flex: 1 0 100%;
+    width: 100%;
+    color: $color-error;
+    font-size: $font-size-sm;
+    margin-top: $space-1;
 }

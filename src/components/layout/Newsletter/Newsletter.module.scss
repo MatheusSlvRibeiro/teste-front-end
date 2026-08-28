@@ -1,90 +1,90 @@
 .newsletter {
-  background: $color-background-dark;
-  color: $color-surface;
+    background: $color-background-dark;
+    color: $color-surface;
 
-  &__inner {
-    @include content-container;
+    &__inner {
+        @include content-container;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $space-4;
-    padding: $space-4 $space-5;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-4;
+        padding: $space-4 $space-5;
 
-    @include respond-to(desktop) {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap;
+        @include respond-to(desktop) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+        }
     }
-  }
 
-  &__intro {
-    max-width: 640px;
-  }
-
-  &__title {
-    font-family: $font-family-heading;
-    font-size: $font-size-xl;
-    font-weight: 700;
-  }
-
-  &__description {
-    margin-top: $space-1;
-    font-size: $font-size-sm;
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: $space-2;
-  }
-
-  &__fields {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-2;
-
-    @include respond-to(desktop) {
-      flex-wrap: nowrap;
+    &__intro {
+        max-width: 640px;
     }
-  }
 
-  &__label {
-    @include visually-hidden;
-  }
+    &__title {
+        font-family: $font-family-heading;
+        font-size: $font-size-xl;
+        font-weight: 700;
+    }
 
-  &__input {
-    min-width: 220px;
-    padding: $space-2 $space-3;
-    border-radius: $radius-button;
-    background: $color-surface;
+    &__description {
+        margin-top: $space-1;
+        font-size: $font-size-sm;
+    }
 
-    @include focus-ring($color-accent);
-  }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+    }
 
-  &__submit {
-    white-space: nowrap;
-  }
+    &__fields {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $space-2;
 
-  &__terms {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: $space-2;
-  }
+        @include respond-to(desktop) {
+            flex-wrap: nowrap;
+        }
+    }
 
-  &__checkbox {
-    @include focus-ring($color-accent);
-  }
+    &__label {
+        @include visually-hidden;
+    }
 
-  &__termsLabel {
-    font-size: $font-size-sm;
-  }
+    &__input {
+        min-width: 220px;
+        padding: $space-2 $space-3;
+        border-radius: $radius-button;
+        background: $color-surface;
 
-  &__termsError {
-    flex-basis: 100%;
-    color: $color-error;
-    font-size: $font-size-sm;
-  }
+        @include focus-ring($color-accent);
+    }
+
+    &__submit {
+        white-space: nowrap;
+    }
+
+    &__terms {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $space-2;
+    }
+
+    &__checkbox {
+        @include focus-ring($color-accent);
+    }
+
+    &__termsLabel {
+        font-size: $font-size-sm;
+    }
+
+    &__termsError {
+        flex-basis: 100%;
+        color: $color-error;
+        font-size: $font-size-sm;
+    }
 }

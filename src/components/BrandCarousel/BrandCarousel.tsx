@@ -7,27 +7,27 @@ import styles from './BrandCarousel.module.scss'
 const BRAND_SLOTS = 5
 
 export function BrandCarousel() {
-  const titleId = useId()
+    const titleId = useId()
 
-  return (
-    <section className={styles.brandCarousel} aria-labelledby={titleId}>
-      <h2 id={titleId} className={styles.brandCarousel__title}>
-        Navegue por marcas
-      </h2>
+    return (
+        <section className={styles.brandCarousel} aria-labelledby={titleId}>
+            <h2 id={titleId} className={styles.brandCarousel__title}>
+                Navegue por marcas
+            </h2>
 
-      <ul className={styles.brandCarousel__list} role="list">
-        {Array.from({ length: BRAND_SLOTS }, (_, index) => (
-          <li key={index} className={styles.brandCarousel__item}>
-            <img
-              className={styles.brandCarousel__logo}
-              src={logoEconverse}
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-            />
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
+            <ul className={styles.brandCarousel__list} role="list">
+                {Array.from({ length: BRAND_SLOTS }, (_, index) => (
+                    <li key={index} className={styles.brandCarousel__item}>
+                        <img
+                            className={styles.brandCarousel__logo}
+                            src={logoEconverse}
+                            alt=""
+                            aria-hidden="true"
+                            decoding="async"
+                        />
+                    </li>
+                ))}
+            </ul>
+        </section>
+    )
 }

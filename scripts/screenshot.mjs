@@ -14,49 +14,47 @@ const BASE_URL = `http://localhost:${PORT}`
 const [, , pathArg = '/', fileArg = 'home.png'] = process.argv
 
 function waitForServer(url, timeoutMs = 30_000) {
-  const deadline = Date.now() + timeoutMs
-  return new Promise((resolve, reject) => {
-    const poll = async () => {
-      try {
-        const response = await fetch(url)
-        if (response.ok) return resolve()
-      } catch {
-        // servidor ainda não subiu, continua tentando
-      }
-      if (Date.now() > deadline) return reject(new Error(`Timeout esperando ${url}`))
-      setTimeout(poll, 300)
-    }
-    poll()
-  })
+    const deadline = Date.now() + timeoutMs
+    return new Promise((resolve, reject) => {
+        const poll = async () => {
+            try {
+                const response = await fetch(url)
+                if (response.ok) return resolve()
+            } catch {
+                // servidor ainda não subiu, continua tentando
+            }
+            if (Date.now() > deadline) return reject(new Error(`Timeout esperando ${url}`))
+            setTimeout(poll, 300)
+        }
+        poll()
+    })
 }
 
 async function main() {
-  await mkdir('screenshots', { recursive: true })
+    await mkdir('screenshots', { recursive: true })
 
-  const server = spawn(
-    'npx',
-    ['vite', '--port', String(PORT), '--strictPort'],
-    { stdio: 'ignore' },
-  )
+    const server = spawn('npx', ['vite', '--port', String(PORT), '--strictPort'], {
+        stdio: 'ignore',
+    })
 
-  try {
-    await waitForServer(BASE_URL)
+    try {
+        await waitForServer(BASE_URL)
 
-    const browser = await chromium.launch({ args: ['--no-sandbox'] })
-    const page = await browser.newPage({ viewport: { width: 1441, height: 900 } })
-    await page.goto(`${BASE_URL}${pathArg}`, { waitUntil: 'networkidle' })
+        const browser = await chromium.launch({ args: ['--no-sandbox'] })
+        const page = await browser.newPage({ viewport: { width: 1441, height: 900 } })
+        await page.goto(`${BASE_URL}${pathArg}`, { waitUntil: 'networkidle' })
 
-    const outPath = `screenshots/${fileArg}`
-    await page.screenshot({ path: outPath, fullPage: true })
-    await browser.close()
+        const outPath = `screenshots/${fileArg}`
+        await page.screenshot({ path: outPath, fullPage: true })
+        await browser.close()
 
-    console.log(`Screenshot salvo em ${outPath}`)
-  } finally {
-    server.kill()
-  }
+        console.log(`Screenshot salvo em ${outPath}`)
+    } finally {
+        server.kill()
+    }
 }
 
 main().catch((error) => {
-  console.error(error)
-  process.exit(1)
+    console.error(error)
+    process.exit(1)
 })
