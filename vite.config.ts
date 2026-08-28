@@ -8,6 +8,14 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(import.meta.dirname, './src') },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "variables" as *; @use "mixins" as *;`,
+        loadPaths: [path.resolve(import.meta.dirname, './src/styles')],
+      },
+    },
+  },
   test: {
     environment: 'jsdom',
     globals: true,

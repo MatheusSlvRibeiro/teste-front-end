@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-1;
+  width: 100%;
+  padding: $space-3;
+  text-align: left;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  box-shadow: $shadow-card;
+
+  @include focus-ring;
+
+  &__image {
+    align-self: center;
+    width: 100%;
+    max-width: 160px;
+    margin-bottom: $space-2;
+  }
+
+  &__description {
+    @include line-clamp(2);
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+  }
+
+  &__price {
+    color: $color-text;
+    font-size: $font-size-lg;
+    font-weight: 700;
+  }
+
+  &__installment {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+  }
+
+  &__freight {
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: 600;
+  }
+
+  &__cta {
+    display: block;
+    width: 100%;
+    margin-top: $space-2;
+    padding: $space-2;
+    color: $color-surface;
+    font-weight: 700;
+    text-align: center;
+    background: $color-primary;
+    border-radius: $radius-button;
+  }
+}

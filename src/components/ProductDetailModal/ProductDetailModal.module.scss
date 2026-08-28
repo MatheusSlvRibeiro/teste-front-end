@@ -1,0 +1,36 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 220px;
+    align-self: center;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    color: $color-text;
+    font-size: $font-size-xl;
+    font-weight: 700;
+  }
+
+  &__description {
+    color: $color-text-muted;
+  }
+}
