@@ -24,10 +24,13 @@ const secondProduct: Product = {
 }
 
 describe('App', () => {
-  it('renderiza o título da vitrine', () => {
+  it('tem exatamente um h1, o headline do hero', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1, name: 'Todos os produtos' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Venha conhecer nossas promoções' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Todos os produtos' })).toBeInTheDocument()
   })
 
   it('usa landmarks semânticos para header, main e a seção de produtos', () => {
