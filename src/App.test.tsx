@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import type { Product } from '@/schemas/product'
@@ -27,9 +27,7 @@ describe('App', () => {
   it('renderiza o título da vitrine', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
     render(<App />)
-    expect(
-      screen.getByRole('heading', { level: 1, name: 'Vitrine de produtos' }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'Todos os produtos' })).toBeInTheDocument()
   })
 
   it('usa landmarks semânticos para header, main e a seção de produtos', () => {
@@ -68,17 +66,19 @@ describe('App', () => {
     vi.mocked(getProducts).mockResolvedValue([product, secondProduct])
     render(<App />)
 
+    const grid = screen.getByRole('region', { name: 'Todos os produtos' })
+
     await waitFor(() => {
-      expect(screen.getAllByRole('button')).toHaveLength(2)
+      expect(within(grid).getAllByRole('button')).toHaveLength(2)
     })
 
-    await userEvent.click(screen.getAllByRole('button')[0])
+    await userEvent.click(within(grid).getAllByRole('button')[0])
     expect(screen.getByRole('heading', { name: product.productName })).toBeInTheDocument()
 
     await userEvent.click(screen.getByRole('button', { name: 'Fechar' }))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
-    await userEvent.click(screen.getAllByRole('button')[1])
+    await userEvent.click(within(grid).getAllByRole('button')[1])
     expect(screen.getByRole('heading', { name: secondProduct.productName })).toBeInTheDocument()
     expect(screen.queryByText(product.productName, { selector: 'h2' })).not.toBeInTheDocument()
   })
