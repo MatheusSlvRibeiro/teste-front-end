@@ -1,5 +1,6 @@
 import { useId } from 'react'
 import partnersImage from '@/assets/images/partners.webp'
+import { Button } from '@/components/ui/Button/Button'
 import styles from './PartnerBanner.module.scss'
 
 interface PartnerBannerProps {
@@ -24,9 +25,7 @@ export function PartnerBanner({
           {title}
         </h2>
         <p className={styles.partnerBanner__description}>{description}</p>
-        <button type="button" className={styles.partnerBanner__cta}>
-          {ctaLabel}
-        </button>
+        <Button className={styles.partnerBanner__cta}>{ctaLabel}</Button>
       </div>
     </section>
   )

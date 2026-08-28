@@ -1,4 +1,6 @@
 .brandCarousel {
+  @include content-container;
+
   padding: $space-4;
 
   &__title {

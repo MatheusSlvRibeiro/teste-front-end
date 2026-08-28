@@ -1,0 +1,17 @@
+.button {
+  padding: $space-2 $space-4;
+  border: none;
+  border-radius: $radius-button;
+  background: $color-accent;
+  color: $color-text;
+  font-family: inherit;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  cursor: pointer;
+
+  @include focus-ring($color-surface);
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}

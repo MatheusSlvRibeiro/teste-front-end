@@ -1,6 +1,8 @@
 // Ícones são aproximações genéricas (sem acesso de edição ao Figma para conferir os
 // exatos); ajustar na revisão pixel-perfect (M01-S09-T01) se divergirem do original.
 .categoryGrid {
+  @include content-container;
+
   padding: $space-4;
 
   &__list {

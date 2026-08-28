@@ -37,18 +37,6 @@
   &__cta {
     margin-top: $space-3;
     padding: $space-2 $space-5;
-    border: none;
-    border-radius: $radius-button;
-    background: $color-accent;
-    color: $color-text;
     font-size: $font-size-base;
-    font-weight: 700;
-    cursor: pointer;
-
-    @include focus-ring($color-surface);
-
-    &:hover {
-      background: $color-accent-hover;
-    }
   }
 }

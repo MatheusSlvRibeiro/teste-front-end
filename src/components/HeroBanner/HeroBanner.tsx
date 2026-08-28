@@ -1,4 +1,5 @@
 import { useId } from 'react'
+import { Button } from '@/components/ui/Button/Button'
 import styles from './HeroBanner.module.scss'
 
 export function HeroBanner() {
@@ -13,9 +14,7 @@ export function HeroBanner() {
         <p className={styles.hero__discount}>
           <span className={styles.hero__discountHighlight}>50% Off</span> nos produtos
         </p>
-        <button type="button" className={styles.hero__cta}>
-          Ver produto
-        </button>
+        <Button className={styles.hero__cta}>Ver produto</Button>
       </div>
     </section>
   )
