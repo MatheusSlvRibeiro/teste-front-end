@@ -1,29 +1,31 @@
 // Ícones são aproximações genéricas (sem acesso de edição ao Figma para conferir os
 // exatos); ajustar na revisão pixel-perfect (M01-S09-T01) se divergirem do original.
 .categoryGrid {
-  padding: $space-4;
+    @include content-container;
 
-  &__list {
-    display: flex;
-    justify-content: center;
-    gap: $space-5;
-    list-style: none;
-    flex-wrap: wrap;
-  }
+    padding: $space-4;
 
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $space-1;
-    max-width: 96px;
-    text-align: center;
-    font-size: $font-size-sm;
-    color: $color-text-muted;
-
-    &--active {
-      color: $color-primary;
-      font-weight: 700;
+    &__list {
+        display: flex;
+        justify-content: center;
+        gap: $space-5;
+        list-style: none;
+        flex-wrap: wrap;
     }
-  }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-1;
+        max-width: 96px;
+        text-align: center;
+        font-size: $font-size-sm;
+        color: $color-text-muted;
+
+        &--active {
+            color: $color-primary;
+            font-weight: 700;
+        }
+    }
 }

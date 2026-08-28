@@ -1,0 +1,192 @@
+.navbar {
+    @include content-container;
+
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+
+    &__mobileBar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $space-2 $space-4;
+
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+
+    &__menuButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: $color-text;
+        cursor: pointer;
+
+        @include focus-ring;
+    }
+
+    &__logo {
+        height: 28px;
+        width: auto;
+    }
+
+    &__profile {
+        position: relative;
+    }
+
+    &__profileButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: $color-text;
+        cursor: pointer;
+
+        @include focus-ring;
+    }
+
+    &__profileMenu {
+        position: absolute;
+        top: calc(100% + #{$space-2});
+        right: 0;
+        z-index: 10;
+        min-width: 200px;
+        padding: $space-2;
+        list-style: none;
+        background: $color-surface;
+        border: 1px solid $color-border;
+        border-radius: $radius-button;
+        box-shadow: $shadow-elevated;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px) scale(0.98);
+        transform-origin: top right;
+        transition:
+            opacity 0.18s ease,
+            transform 0.18s ease,
+            visibility 0s linear 0.18s;
+
+        &--open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease,
+                visibility 0s linear 0s;
+        }
+    }
+
+    &__profileMenuItem {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        width: 100%;
+        padding: $space-2;
+        border: none;
+        background: transparent;
+        font: inherit;
+        font-size: $font-size-sm;
+        color: $color-text;
+        text-align: left;
+        cursor: pointer;
+        border-radius: $radius-button;
+
+        @include focus-ring;
+
+        &:hover {
+            background: $color-surface-muted;
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+
+        &--open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+
+    &__list {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+        width: min(80vw, 320px);
+        overflow-y: auto;
+        list-style: none;
+        padding: $space-5 $space-4;
+        background: $color-surface;
+        box-shadow: $shadow-elevated;
+        visibility: hidden;
+        transform: translateX(-100%);
+        transition:
+            transform 0.3s ease,
+            visibility 0s linear 0.3s;
+
+        &--open {
+            visibility: visible;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        @include respond-to(tablet) {
+            position: static;
+            z-index: auto;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: $space-4;
+            width: auto;
+            overflow: visible;
+            padding: $space-2 $space-4;
+            background: transparent;
+            box-shadow: none;
+            visibility: visible;
+            transform: none;
+            transition: none;
+        }
+    }
+
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-1;
+        white-space: nowrap;
+        padding: 0;
+        border: none;
+        background: transparent;
+        font-family: inherit;
+        font-size: $font-size-sm;
+        color: $color-text;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover {
+            color: $color-primary;
+        }
+
+        &--active {
+            color: $color-primary;
+            font-weight: 700;
+        }
+    }
+}
