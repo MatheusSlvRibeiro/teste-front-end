@@ -27,12 +27,6 @@
     font-size: $font-size-sm;
   }
 
-  &__oldPrice {
-    color: $color-text-disabled;
-    font-size: $font-size-sm;
-    text-decoration: line-through;
-  }
-
   &__price {
     color: $color-text;
     font-size: $font-size-lg;
