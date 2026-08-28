@@ -1,44 +1,59 @@
-// Tokens extraídos por inspeção visual de screenshots reais do Figma (header, hero,
-// vitrine, modal) — compartilhados pelo dev em 2026-08-27. Ainda não são valores exatos
-// do painel "Inspect" do Figma (não temos acesso de edição nesta sessão); ajustar com
-// precisão de pixel na revisão de M01-S04-T01 caso o dev extraia os valores exatos.
+// Tokens corrigidos a partir de uma referência de design real (cores exatas, tipografia
+// Poppins/Work Sans, spacing e breakpoints) — substitui a amostragem por inspeção visual
+// de screenshots feita antes de termos acesso a essa referência (ver histórico do PR que
+// introduziu este arquivo). Nomes dos tokens mantidos para não quebrar os componentes já
+// implementados; só os valores foram corrigidos.
 
-// Marca — indigo/azul (nav ativo, heading "Produtos relacionados", botão "COMPRAR" dos
-// cards, "Navegue por marcas") + amarelo/dourado (CTAs de destaque: "Ver produto",
-// "CONFIRA", "INSCREVER", logo)
-$color-primary: #3730a3;
-$color-primary-hover: #2e2686;
-$color-accent: #f2c230;
-$color-accent-hover: #d9a91d;
+// Marca — azul (nav ativo, heading "Produtos relacionados", botão "COMPRAR" dos cards,
+// "Navegue por marcas") + amarelo (CTAs de destaque: "Ver produto", "CONFIRA",
+// "INSCREVER", logo) + roxo escuro (fundo do hero, footer)
+$color-primary: #3442b5;
+$color-primary-hover: #3019b2;
+$color-accent: #f7ca11;
+$color-accent-hover: #dab00e;
+$color-brand-dark: #271c47;
 
-$color-text: #1f2937;
-$color-text-muted: #6b7280;
-$color-text-disabled: #9ca3af;
+$color-text: #3f3f40;
+$color-text-muted: #676767;
+$color-text-disabled: #9f9f9f;
 
 $color-surface: #ffffff;
 $color-background: #ffffff;
-$color-background-dark: #1e1b4b;
-$color-border: #e5e7eb;
+$color-background-dark: $color-brand-dark;
+$color-border: #e7e7e7;
 
-$font-family-base:
+$system-font-stack:
   system-ui,
   -apple-system,
   'Segoe UI',
   Roboto,
   sans-serif;
+$font-family-base: 'Work Sans', $system-font-stack;
+$font-family-heading: 'Poppins', $system-font-stack;
 
+$font-size-xs: 0.75rem;
 $font-size-sm: 0.875rem;
 $font-size-base: 1rem;
 $font-size-lg: 1.25rem;
-$font-size-xl: 1.75rem;
+$font-size-xl: 2rem;
 
 $space-1: 4px;
 $space-2: 8px;
 $space-3: 16px;
 $space-4: 24px;
 $space-5: 32px;
+$space-6: 42px;
+$space-7: 80px;
 
-$radius-card: 12px;
-$radius-button: 6px;
+$radius-card: 16px;
+$radius-button: 8px;
+$radius-full: 50%;
 
-$shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-card: 0 4px 8px rgba(0, 0, 0, 0.08);
+$shadow-elevated: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-desktop-lg: 1200px;
+$breakpoint-wide: 1280px;
