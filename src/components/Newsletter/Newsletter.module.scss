@@ -1,12 +1,18 @@
 .newsletter {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: $space-4;
   padding: $space-4 $space-5;
   background: $color-background-dark;
   color: $color-surface;
+
+  @include respond-to(desktop) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
 
   &__intro {
     max-width: 640px;
@@ -33,6 +39,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: $space-2;
+
+    @include respond-to(desktop) {
+      flex-wrap: nowrap;
+    }
   }
 
   &__label {

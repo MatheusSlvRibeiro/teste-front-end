@@ -3,14 +3,18 @@
 
   &__main {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: $space-5;
+    gap: $space-6;
+    max-width: 1100px;
+    margin: 0 auto;
     padding: $space-5 $space-4;
   }
 
   &__brand {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: $space-3;
     max-width: 280px;
   }
@@ -40,7 +44,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: $space-5;
-    flex: 1;
 
     @include respond-to(tablet) {
       gap: $space-6;
@@ -103,7 +106,6 @@
 
   &__legal {
     padding: $space-3 $space-4;
-    border-top: 1px solid $color-border-strong;
     background: $color-surface;
     color: $color-text-muted;
     font-size: $font-size-sm;
