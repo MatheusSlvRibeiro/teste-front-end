@@ -2,10 +2,10 @@ import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import type { Product } from '@/schemas/product'
-import App from './App'
-import { getProducts } from './lib/api/products'
+import { Home } from './Home'
+import { getProducts } from '@/lib/api/products'
 
-vi.mock('./lib/api/products', () => ({
+vi.mock('@/lib/api/products', () => ({
   getProducts: vi.fn(),
 }))
 
@@ -23,40 +23,31 @@ const secondProduct: Product = {
   price: 9000,
 }
 
-describe('App', () => {
-  it('tem exatamente um h1, o headline do hero', () => {
+describe('Home', () => {
+  it('tem o headline do hero e o heading da vitrine', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
-    render(<App />)
+    render(<Home />)
     expect(
       screen.getByRole('heading', { level: 1, name: 'Venha conhecer nossas promoções' }),
     ).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: 'Todos os produtos' })).toBeInTheDocument()
   })
 
-  it('usa landmarks semânticos para header, main, rodapé e a seção de produtos', () => {
+  it('usa uma região identificável para a vitrine de produtos', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
-    render(<App />)
-    expect(screen.getByRole('banner')).toBeInTheDocument()
-    expect(screen.getByRole('main')).toBeInTheDocument()
+    render(<Home />)
     expect(screen.getByRole('region', { name: 'Todos os produtos' })).toBeInTheDocument()
-    expect(
-      screen.getByRole('region', { name: 'Inscreva-se na nossa newsletter' }),
-    ).toBeInTheDocument()
-
-    const footer = screen.getByRole('contentinfo')
-    expect(footer).toBeInTheDocument()
-    expect(screen.getByRole('main')).not.toContainElement(footer)
   })
 
   it('mostra um indicador de carregamento enquanto os produtos não chegam', () => {
     vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
-    render(<App />)
+    render(<Home />)
     expect(screen.getByRole('status')).toBeInTheDocument()
   })
 
   it('renderiza um card por produto retornado', async () => {
     vi.mocked(getProducts).mockResolvedValue([product])
-    render(<App />)
+    render(<Home />)
 
     await waitFor(() => {
       expect(screen.getByText(product.descriptionShort)).toBeInTheDocument()
@@ -65,7 +56,7 @@ describe('App', () => {
 
   it('exibe uma mensagem de erro visível quando a busca falha', async () => {
     vi.mocked(getProducts).mockRejectedValue(new Error('network error'))
-    render(<App />)
+    render(<Home />)
 
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument()
@@ -74,7 +65,7 @@ describe('App', () => {
 
   it('abre o modal com o produto correto ao clicar em um card, sem vazar dados entre produtos', async () => {
     vi.mocked(getProducts).mockResolvedValue([product, secondProduct])
-    render(<App />)
+    render(<Home />)
 
     const grid = screen.getByRole('region', { name: 'Todos os produtos' })
 

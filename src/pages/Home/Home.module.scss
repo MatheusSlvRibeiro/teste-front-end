@@ -1,4 +1,6 @@
 .partners {
+  @include content-container;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: $space-3;
@@ -6,6 +8,8 @@
 }
 
 .vitrine {
+  @include content-container;
+
   padding: $space-4;
 
   &__heading {
