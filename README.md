@@ -29,3 +29,66 @@ Segue abaixo as instruções para a execução do teste.
 - Alcance dos objetivos propostos
 
 **Boa sorte! ;)**
+
+---
+
+## Como rodar o projeto
+
+### Pré-requisitos
+
+- Node.js 20+ e npm
+
+### Instalação
+
+```bash
+git clone https://github.com/MatheusSlvRibeiro/teste-front-end.git
+cd teste-front-end
+npm install
+```
+
+### Variáveis de ambiente
+
+Copie o arquivo de exemplo e ajuste se necessário (os defaults já funcionam sem alteração):
+
+```bash
+cp .env.example .env
+```
+
+| Variável | Descrição | Default |
+|---|---|---|
+| `VITE_PRODUCTS_API_URL` | URL do JSON de produtos | `https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json` |
+| `VITE_USE_MOCK_API` | `"true"` para usar mock local em vez do fetch real | `"false"` |
+
+### Desenvolvimento
+
+```bash
+npm run dev
+```
+
+Abre em `http://localhost:5173`.
+
+### Build de produção
+
+```bash
+npm run build
+```
+
+O artefato gerado fica em `dist/`.
+
+### Testes
+
+```bash
+npm run test        # executa todos os testes (Vitest + Testing Library)
+```
+
+### Lint
+
+```bash
+npm run lint        # ESLint com flat config (TS + React Hooks + Prettier)
+```
+
+### Validação completa (lint + build + test)
+
+```bash
+npm run lint && npm run build && npm run test
+```
