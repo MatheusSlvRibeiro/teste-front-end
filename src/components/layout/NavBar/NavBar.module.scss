@@ -1,10 +1,10 @@
 .navbar {
-    @include content-container;
-
     border-top: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
 
     &__mobileBar {
+        @include content-container;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -149,12 +149,14 @@
         }
 
         @include respond-to(tablet) {
+            @include content-container;
+
             position: static;
             z-index: auto;
             flex-direction: row;
             justify-content: space-between;
             gap: $space-4;
-            width: auto;
+            width: 100%;
             overflow: visible;
             padding: $space-2 $space-4;
             background: transparent;

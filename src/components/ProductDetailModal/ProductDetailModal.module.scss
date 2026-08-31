@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: $space-4;
 
-    @media (min-width: 640px) {
+    @include respond-to(tablet) {
         flex-direction: row;
     }
 
