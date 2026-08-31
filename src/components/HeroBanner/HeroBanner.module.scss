@@ -17,6 +17,8 @@
     }
 
     &__overlay {
+        position: relative;
+        z-index: 1;
         min-height: inherit;
         background: linear-gradient(
             90deg,
