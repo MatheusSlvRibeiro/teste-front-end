@@ -75,6 +75,24 @@ Depois de instalar as dependências, verifique se as milestones do ROADMAP exist
 
 ---
 
+## Validação visual com screenshot (Playwright)
+
+O projeto inclui uma ferramenta auxiliar para captura de screenshot durante o desenvolvimento (não é suíte de teste E2E — não tem asserções automáticas).
+
+```bash
+# Sobe o vite dev server, tira screenshot full-page em 1441×900 e derruba o servidor
+npm run screenshot
+
+# Argumentos opcionais: [rota] [nome-do-arquivo.png]
+npm run screenshot -- / desktop.png
+```
+
+O arquivo gerado fica em `screenshots/` (pasta ignorada pelo git).
+Playwright e Chromium são instalados automaticamente como devDependency (`playwright`).
+Se o binário do Chromium não estiver baixado, rode `npx playwright install chromium` após `npm install`.
+
+---
+
 ## Rastreamento de tasks
 
 Este repositório é um fork isolado (`MatheusSlvRibeiro/teste-front-end`), sem organização Forgejo por trás — a sincronia do ROADMAP roda no **GitHub** (Issues, habilitadas manualmente neste fork), não no Forgejo padrão do harness. Ver skill `workflow-issues` para o procedimento original (Forgejo); aqui o mapeamento é o mesmo (`Milestone` = M0X, label `sprint/M0X-S0X` = sprint, issue com marcador `Task: M0X-S0X-T0X` = task), só o backend muda.
