@@ -36,9 +36,9 @@
                 "O layout é construído com HTML semântico (landmarks como header/main/section, não divs genéricas para tudo)"
             ],
             "linked_issues": [3, 11, 12, 15, 17],
-            "implemented": false,
+            "implemented": true,
             "verified": false,
-            "notes": ""
+            "notes": "Layout base com landmarks semânticos implementado. Tokens de cor/tipografia (Poppins/Work Sans) corrigidos com valores reais. SEO: title descritivo, meta description e og:* tags aplicados em #12."
         },
         {
             "id": "F004",
@@ -73,10 +73,10 @@
                 "Hero exibe o headline \"Venha conhecer nossas promoções\", o destaque \"50% Off nos produtos\" e o botão \"Ver produto\"",
                 "Grid de categorias exibe os 7 ícones do Figma (Tecnologia, Supermercado, Bebidas, Ferramentas, Saúde, Esportes e Fitness, Moda) com Tecnologia marcada como ativa"
             ],
-            "linked_issues": [],
-            "implemented": false,
+            "linked_issues": [22, 23],
+            "implemented": true,
             "verified": false,
-            "notes": ""
+            "notes": "HeroBanner e CategoryGrid implementados com SCSS Modules; dados estáticos conforme Figma."
         },
         {
             "id": "F007",
@@ -85,10 +85,10 @@
                 "Seção \"Parceiros\" exibe pelo menos 2 banners, cada um com título, texto e botão \"CONFIRA\"",
                 "Seção \"Navegue por marcas\" exibe um carrossel com pelo menos 5 logos"
             ],
-            "linked_issues": [],
-            "implemented": false,
+            "linked_issues": [24, 25, 29],
+            "implemented": true,
             "verified": false,
-            "notes": ""
+            "notes": "Dois PartnerBanners intercalados com a vitrine (conforme Figma) e BrandCarousel com 5 logos implementados."
         },
         {
             "id": "F008",
