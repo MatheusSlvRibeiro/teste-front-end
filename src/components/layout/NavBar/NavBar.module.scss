@@ -49,34 +49,39 @@
     }
 
     &__profileMenu {
-        position: absolute;
-        top: calc(100% + #{$space-2});
-        right: 0;
-        z-index: 10;
-        min-width: 200px;
-        padding: $space-2;
-        list-style: none;
-        background: $color-surface;
-        border: 1px solid $color-border;
-        border-radius: $radius-button;
-        box-shadow: $shadow-elevated;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-4px) scale(0.98);
-        transform-origin: top right;
-        transition:
-            opacity 0.18s ease,
-            transform 0.18s ease,
-            visibility 0s linear 0.18s;
+        display: none;
 
-        &--open {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
+        @include respond-to(tablet) {
+            display: block;
+            position: absolute;
+            top: calc(100% + #{$space-2});
+            right: 0;
+            z-index: 10;
+            min-width: 200px;
+            padding: $space-2;
+            list-style: none;
+            background: $color-surface;
+            border: 1px solid $color-border;
+            border-radius: $radius-button;
+            box-shadow: $shadow-elevated;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-4px) scale(0.98);
+            transform-origin: top right;
             transition:
                 opacity 0.18s ease,
                 transform 0.18s ease,
-                visibility 0s linear 0s;
+                visibility 0s linear 0.18s;
+
+            &--open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+                transition:
+                    opacity 0.18s ease,
+                    transform 0.18s ease,
+                    visibility 0s linear 0s;
+            }
         }
     }
 
@@ -94,6 +99,165 @@
         text-align: left;
         cursor: pointer;
         border-radius: $radius-button;
+
+        @include focus-ring;
+
+        &:hover {
+            background: $color-surface-muted;
+        }
+    }
+
+    &__searchRow {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        padding: $space-2 $space-4;
+        border-bottom: 1px solid $color-border;
+        background: $color-surface;
+
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+
+    &__searchLabel {
+        display: flex;
+        align-items: center;
+        color: $color-text-muted;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    &__searchVisuallyHidden {
+        @include visually-hidden;
+    }
+
+    &__searchInput {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-family: $font-family-base;
+        font-size: $font-size-sm;
+        color: $color-text;
+
+        &::placeholder {
+            color: $color-text-disabled;
+        }
+
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
+
+    &__profilePanel {
+        display: grid;
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition:
+            grid-template-rows 0.3s ease,
+            visibility 0s linear 0.3s;
+        background: $color-surface;
+        border-bottom: 1px solid $color-border;
+
+        &--open {
+            grid-template-rows: 1fr;
+            visibility: visible;
+            transition:
+                grid-template-rows 0.3s ease,
+                visibility 0s linear 0s;
+        }
+
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+
+    &__profilePanelInner {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__profilePanelHeader {
+        display: flex;
+        align-items: center;
+        gap: $space-3;
+        padding: $space-3 $space-4;
+        border-bottom: 1px solid $color-border;
+        font-family: $font-family-heading;
+        font-weight: 600;
+        color: $color-text;
+    }
+
+    &__profilePanelList {
+        list-style: none;
+        padding: $space-2 0;
+    }
+
+    &__profilePanelItem {
+        display: flex;
+        align-items: center;
+        gap: $space-3;
+        width: 100%;
+        padding: $space-2 $space-4;
+        border: none;
+        background: transparent;
+        font: inherit;
+        font-size: $font-size-sm;
+        color: $color-text;
+        text-align: left;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover {
+            background: $color-surface-muted;
+        }
+    }
+
+    &__profilePanelFooter {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+        padding: $space-3 $space-4;
+        border-top: 1px solid $color-border;
+    }
+
+    &__profilePanelEnter {
+        width: 100%;
+        padding: $space-2 $space-4;
+        border: none;
+        border-radius: $radius-button;
+        background: $color-primary;
+        color: $color-surface;
+        font-family: $font-family-heading;
+        font-size: $font-size-sm;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover {
+            background: $color-primary-hover;
+        }
+    }
+
+    &__profilePanelRegister {
+        width: 100%;
+        padding: $space-2 $space-4;
+        border: 1px solid $color-border;
+        border-radius: $radius-button;
+        background: transparent;
+        font-family: $font-family-heading;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        color: $color-text;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
 
         @include focus-ring;
 

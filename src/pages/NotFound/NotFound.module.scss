@@ -1,0 +1,49 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: $space-6 $space-4;
+    text-align: center;
+    gap: $space-3;
+}
+
+.notfound__code {
+    font-family: $font-family-heading;
+    font-size: 6rem;
+    font-weight: 700;
+    color: $color-error;
+    line-height: 1;
+}
+
+.notfound__title {
+    font-family: $font-family-heading;
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-text;
+}
+
+.notfound__message {
+    color: $color-text-muted;
+    max-width: 400px;
+}
+
+.notfound__back {
+    margin-top: $space-3;
+    padding: $space-2 $space-5;
+    border: none;
+    border-radius: $radius-button;
+    background: $color-primary;
+    color: $color-surface;
+    font-family: $font-family-heading;
+    font-size: $font-size-base;
+    font-weight: 600;
+    cursor: pointer;
+
+    @include focus-ring;
+
+    &:hover {
+        background: $color-primary-hover;
+    }
+}

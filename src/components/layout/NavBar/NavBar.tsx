@@ -4,6 +4,7 @@ import { CartIcon } from '@/components/icons/CartIcon'
 import { HeartIcon } from '@/components/icons/HeartIcon'
 import { KingIcon } from '@/components/icons/KingIcon'
 import { MenuIcon } from '@/components/icons/MenuIcon'
+import { SearchIcon } from '@/components/icons/SearchIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import styles from './NavBar.module.scss'
 
@@ -42,15 +43,18 @@ export function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isProfileOpen, setIsProfileOpen] = useState(false)
     const profileRef = useRef<HTMLDivElement>(null)
+    const profilePanelRef = useRef<HTMLDivElement>(null)
     const listId = useId()
+    const searchId = useId()
 
     useEffect(() => {
         if (!isProfileOpen) return
 
         function handleClickOutside(event: MouseEvent) {
-            if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
-                setIsProfileOpen(false)
-            }
+            const target = event.target as Node
+            const inButton = profileRef.current?.contains(target)
+            const inPanel = profilePanelRef.current?.contains(target)
+            if (!inButton && !inPanel) setIsProfileOpen(false)
         }
 
         function handleKeyDown(event: KeyboardEvent) {
@@ -136,6 +140,63 @@ export function NavBar() {
                             </li>
                         ))}
                     </ul>
+                </div>
+            </div>
+
+            <div className={styles.navbar__searchRow}>
+                <label htmlFor={searchId} className={styles.navbar__searchLabel}>
+                    <SearchIcon size={16} />
+                    <span className={styles.navbar__searchVisuallyHidden}>Buscar produtos</span>
+                </label>
+                <input
+                    id={searchId}
+                    type="search"
+                    className={styles.navbar__searchInput}
+                    placeholder="Buscar produtos..."
+                    autoComplete="off"
+                />
+            </div>
+
+            <div
+                ref={profilePanelRef}
+                aria-hidden={!isProfileOpen}
+                className={`${styles.navbar__profilePanel} ${isProfileOpen ? styles['navbar__profilePanel--open'] : ''}`.trim()}
+            >
+                <div className={styles.navbar__profilePanelInner}>
+                    <div className={styles.navbar__profilePanelHeader}>
+                        <UserIcon size={28} />
+                        <span>Olá. Acesse sua conta</span>
+                    </div>
+                    <ul className={styles.navbar__profilePanelList}>
+                        {PROFILE_MENU_ITEMS.map(({ label, icon: Icon }) => (
+                            <li key={label}>
+                                <button
+                                    type="button"
+                                    className={styles.navbar__profilePanelItem}
+                                    onClick={() => setIsProfileOpen(false)}
+                                >
+                                    <Icon size={18} />
+                                    {label}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className={styles.navbar__profilePanelFooter}>
+                        <button
+                            type="button"
+                            className={styles.navbar__profilePanelEnter}
+                            onClick={() => setIsProfileOpen(false)}
+                        >
+                            Entrar
+                        </button>
+                        <button
+                            type="button"
+                            className={styles.navbar__profilePanelRegister}
+                            onClick={() => setIsProfileOpen(false)}
+                        >
+                            Cadastrar-se
+                        </button>
+                    </div>
                 </div>
             </div>
 

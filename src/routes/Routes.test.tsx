@@ -28,15 +28,15 @@ describe('Routes', () => {
         expect(screen.getByRole('main')).not.toContainElement(footer)
     })
 
-    it('redireciona uma rota desconhecida de volta para a Home', () => {
+    it('renderiza a página 404 para rotas desconhecidas', () => {
         render(
             <MemoryRouter initialEntries={['/rota-que-nao-existe']}>
                 <Routes />
             </MemoryRouter>,
         )
 
-        expect(
-            screen.getByRole('heading', { level: 1, name: 'Venha conhecer nossas promoções' }),
-        ).toBeInTheDocument()
+        expect(screen.getByText('404')).toBeInTheDocument()
+        expect(screen.getByText('Página não encontrada')).toBeInTheDocument()
+        expect(screen.getByRole('button', { name: 'Voltar' })).toBeInTheDocument()
     })
 })
