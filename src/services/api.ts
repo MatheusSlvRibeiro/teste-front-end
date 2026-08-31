@@ -1,79 +1,63 @@
 export type QueryParams = Record<string, string | number | boolean | undefined>
 
 export class ApiError extends Error {
-    readonly status: number
-    readonly body: unknown
+    status: number
+    body: unknown
 
-    constructor(status: number, method: string, path: string, body: unknown) {
-        super(`Falha na requisição: HTTP ${status} (${method} ${path})`)
-        this.name = 'ApiError'
+    constructor(status: number, body: unknown) {
+        super(`HTTP ${status}`)
         this.status = status
         this.body = body
     }
 }
 
-function buildUrl(path: string, params?: QueryParams): string {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
-    if (!baseUrl) {
-        throw new Error(
-            'VITE_API_BASE_URL não está configurada — obrigatória para usar o client de src/services/api.ts',
-        )
-    }
+function buildUrl(path: string, query?: QueryParams): string {
+    const base = import.meta.env.VITE_API_BASE_URL
+    if (!base) throw new Error('VITE_API_BASE_URL não está configurada')
 
-    const normalizedBase = baseUrl.replace(/\/+$/, '')
-    const normalizedPath = path.startsWith('/') ? path : `/${path}`
-    const url = new URL(`${normalizedBase}${normalizedPath}`)
+    const cleanBase = base.replace(/\/$/, '')
+    const url = new URL(cleanBase + path)
 
-    if (params) {
-        Object.entries(params).forEach(([key, value]) => {
-            if (value !== undefined) url.searchParams.set(key, String(value))
+    if (query) {
+        Object.entries(query).forEach(([key, val]) => {
+            if (val !== undefined) url.searchParams.set(key, String(val))
         })
     }
 
     return url.toString()
 }
 
-async function readBody(response: Response): Promise<unknown> {
-    if (response.status === 204 || response.headers.get('content-length') === '0') {
-        return undefined
-    }
-
-    const contentType = response.headers.get('content-type') ?? ''
-    if (!contentType.includes('application/json')) {
-        return undefined
-    }
-
-    return response.json()
+function isJson(response: Response): boolean {
+    return (response.headers.get('content-type') ?? '').includes('application/json')
 }
 
 async function request<TResponse>(
-    method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
     path: string,
-    options: { body?: unknown; params?: QueryParams } = {},
+    init: RequestInit,
+    query?: QueryParams,
 ): Promise<TResponse> {
-    const { body, params } = options
-
-    const response = await fetch(buildUrl(path, params), {
-        method,
-        headers: body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
-        body: body !== undefined ? JSON.stringify(body) : undefined,
+    const url = buildUrl(path, query)
+    const response = await fetch(url, {
+        ...init,
+        headers: { 'Content-Type': 'application/json', ...init.headers },
     })
 
     if (!response.ok) {
-        throw new ApiError(response.status, method, path, await readBody(response))
+        const body = isJson(response) ? await response.json() : null
+        throw new ApiError(response.status, body)
     }
 
-    return (await readBody(response)) as TResponse
+    if (response.status === 204 || !isJson(response)) return undefined as TResponse
+    return response.json() as Promise<TResponse>
 }
 
 const api = {
-    get: <TResponse>(path: string, params?: QueryParams) =>
-        request<TResponse>('GET', path, { params }),
-    post: <TResponse, TBody = unknown>(path: string, data: TBody) =>
-        request<TResponse>('POST', path, { body: data }),
-    patch: <TResponse, TBody = unknown>(path: string, data: TBody) =>
-        request<TResponse>('PATCH', path, { body: data }),
-    delete: (path: string) => request<void>('DELETE', path),
+    get: <T>(path: string, query?: QueryParams) => request<T>(path, { method: 'GET' }, query),
+    post: <T, B>(path: string, body: B) =>
+        request<T>(path, { method: 'POST', body: JSON.stringify(body) }),
+    patch: <T, B>(path: string, body: B) =>
+        request<T>(path, { method: 'PATCH', body: JSON.stringify(body) }),
+    delete: (path: string) => request<void>(path, { method: 'DELETE' }),
 }
 
 export default api
