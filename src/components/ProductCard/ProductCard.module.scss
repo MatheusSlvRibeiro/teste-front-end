@@ -1,3 +1,28 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -10,6 +35,7 @@
     border: 1px solid $color-border;
     border-radius: $radius-card;
     box-shadow: $shadow-card;
+    animation: slideInRight 0.3s ease forwards;
 
     @include focus-ring;
 
@@ -23,6 +49,12 @@
     &__description {
         @include line-clamp(2);
 
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+    }
+
+    &__old_price {
+        text-decoration: line-through;
         color: $color-text-muted;
         font-size: $font-size-sm;
     }
@@ -55,4 +87,17 @@
         background: $color-primary;
         border-radius: $radius-button;
     }
+}
+
+.slide-enter {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+.card--skeleton {
+    width: 100%;
+    min-height: 320px;
+    border-radius: $radius-card;
+    background: linear-gradient(90deg, #f1f1f1 25%, #e5e5e5 50%, #f1f1f1 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
 }

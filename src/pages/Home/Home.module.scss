@@ -1,16 +1,1 @@
-.vitrine {
-    @include content-container;
-
-    padding: $space-4;
-
-    &__heading {
-        font-size: $font-size-lg;
-        margin-bottom: $space-3;
-    }
-
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: $space-3;
-    }
-}
+// Home page styles — layout handled by RelatedProductsSection and its sub-components

@@ -1,0 +1,92 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    touch-action: pan-y;
+
+    &__track {
+        display: flex;
+        gap: $space-4;
+        transition: transform 0.3s ease;
+    }
+
+    &__slide {
+        flex: 0 0
+            calc((100% - (var(--items-per-page, 4) - 1) * #{$space-4}) / var(--items-per-page, 4));
+        min-width: 0;
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        border-radius: $radius-full;
+        background: $color-surface;
+        border: 1px solid $color-border;
+        box-shadow: $shadow-card;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid $color-text;
+            border-right: 2px solid $color-text;
+        }
+
+        &--prev {
+            left: -16px;
+
+            &::before {
+                transform: rotate(-135deg) translate(-2px, 2px);
+            }
+        }
+
+        &--next {
+            right: -16px;
+
+            &::before {
+                transform: rotate(45deg) translate(-2px, 2px);
+            }
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+    }
+
+    &__error {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-3;
+        padding: $space-4;
+        border: 1px solid $color-border;
+        border-radius: $radius-card;
+        text-align: center;
+
+        button {
+            padding: $space-2 $space-4;
+            background: $color-primary;
+            color: $color-surface;
+            border: none;
+            border-radius: $radius-button;
+            cursor: pointer;
+            font-weight: 700;
+
+            @include focus-ring;
+        }
+    }
+}

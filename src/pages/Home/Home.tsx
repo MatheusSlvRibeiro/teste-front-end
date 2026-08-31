@@ -3,11 +3,10 @@ import { BrandCarousel } from '@/components/BrandCarousel/BrandCarousel'
 import { CategoryGrid } from '@/components/CategoryGrid/CategoryGrid'
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner'
 import { PartnerBanner } from '@/components/PartnerBanner/PartnerBanner'
-import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ProductDetailModal } from '@/components/ProductDetailModal/ProductDetailModal'
+import { RelatedProductsSection } from '@/components/RelatedProductsSection/RelatedProductsSection'
 import { getProducts } from '@/lib/api/products'
 import type { Product } from '@/schemas/product'
-import styles from './Home.module.scss'
 
 type FetchState =
     | { status: 'loading' }
@@ -46,50 +45,30 @@ export function Home() {
 
             <PartnerBanner description="Descontos exclusivos com nossos parceiros." />
 
-            <section aria-labelledby={vitrine1Id} className={styles.vitrine}>
-                <h2 id={vitrine1Id} className={styles.vitrine__heading}>
-                    Todos os produtos
-                </h2>
-
-                {state.status === 'loading' && <p role="status">Carregando produtos…</p>}
-                {state.status === 'error' && <p role="alert">{state.message}</p>}
-                {state.status === 'success' && (
-                    <div className={styles.vitrine__grid}>
-                        {state.products.map((product) => (
-                            <ProductCard
-                                key={product.productName}
-                                product={product}
-                                onSelect={setSelectedProduct}
-                            />
-                        ))}
-                    </div>
-                )}
-            </section>
+            <RelatedProductsSection
+                title="Todos os produtos"
+                showCategories={false}
+                products={state.status === 'success' ? state.products : []}
+                loading={state.status === 'loading'}
+                error={state.status === 'error' ? state.message : null}
+                onProductClick={setSelectedProduct}
+                sectionId={vitrine1Id}
+            />
 
             <PartnerBanner
                 title="Rede parceira"
                 description="Frete grátis em compras selecionadas na rede parceira."
             />
 
-            <section aria-labelledby={vitrine2Id} className={styles.vitrine}>
-                <h2 id={vitrine2Id} className={styles.vitrine__heading}>
-                    Produtos relacionados
-                </h2>
-
-                {state.status === 'loading' && <p role="status">Carregando produtos…</p>}
-                {state.status === 'error' && <p role="alert">{state.message}</p>}
-                {state.status === 'success' && (
-                    <div className={styles.vitrine__grid}>
-                        {state.products.map((product) => (
-                            <ProductCard
-                                key={product.productName}
-                                product={product}
-                                onSelect={setSelectedProduct}
-                            />
-                        ))}
-                    </div>
-                )}
-            </section>
+            <RelatedProductsSection
+                title="Produtos relacionados"
+                showCategories={true}
+                products={state.status === 'success' ? state.products : []}
+                loading={state.status === 'loading'}
+                error={state.status === 'error' ? state.message : null}
+                onProductClick={setSelectedProduct}
+                sectionId={vitrine2Id}
+            />
 
             <BrandCarousel />
 

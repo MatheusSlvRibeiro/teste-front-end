@@ -1,6 +1,6 @@
 import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi, beforeEach } from 'vitest'
 import type { Product } from '@/schemas/product'
 import { Home } from './Home'
 import { getProducts } from '@/lib/api/products'
@@ -8,6 +8,9 @@ import { getProducts } from '@/lib/api/products'
 vi.mock('@/lib/api/products', () => ({
     getProducts: vi.fn(),
 }))
+
+// Ensure useItemsPerPage returns 4 for consistent test behavior
+Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
 
 const product: Product = {
     productName: 'Iphone 11 PRO MAX BRANCO',
@@ -24,6 +27,10 @@ const secondProduct: Product = {
 }
 
 describe('Home', () => {
+    beforeEach(() => {
+        Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
+    })
+
     it('tem o headline do hero e o heading da vitrine', () => {
         vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
         render(<Home />)
@@ -44,7 +51,7 @@ describe('Home', () => {
     it('mostra um indicador de carregamento enquanto os produtos não chegam', () => {
         vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
         render(<Home />)
-        // duas vitrines → dois status, um por seção
+        // skeleton cards render with role="status"
         expect(screen.getAllByRole('status').length).toBeGreaterThanOrEqual(1)
     })
 
@@ -63,8 +70,11 @@ describe('Home', () => {
         render(<Home />)
 
         await waitFor(() => {
-            // duas vitrines → dois alertas, um por seção
-            expect(screen.getAllByRole('alert').length).toBeGreaterThanOrEqual(1)
+            // duas vitrines → dois alertas via role="alert" não mais disponíveis
+            // o erro é renderizado como texto dentro do carrossel
+            expect(
+                screen.getAllByText('Não foi possível carregar os produtos.').length,
+            ).toBeGreaterThanOrEqual(1)
         })
     })
 
@@ -75,16 +85,19 @@ describe('Home', () => {
         const grid = screen.getByRole('region', { name: 'Todos os produtos' })
 
         await waitFor(() => {
-            expect(within(grid).getAllByRole('button')).toHaveLength(2)
+            // At 1280px, items per page = 4, so both products should be visible
+            expect(
+                within(grid).getByRole('button', { name: product.productName }),
+            ).toBeInTheDocument()
         })
 
-        await userEvent.click(within(grid).getAllByRole('button')[0])
+        await userEvent.click(within(grid).getByRole('button', { name: product.productName }))
         expect(screen.getByRole('heading', { name: product.productName })).toBeInTheDocument()
 
         await userEvent.click(screen.getByRole('button', { name: 'Fechar' }))
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
-        await userEvent.click(within(grid).getAllByRole('button')[1])
+        await userEvent.click(within(grid).getByRole('button', { name: secondProduct.productName }))
         expect(screen.getByRole('heading', { name: secondProduct.productName })).toBeInTheDocument()
         expect(screen.queryByText(product.productName, { selector: 'h2' })).not.toBeInTheDocument()
     })
