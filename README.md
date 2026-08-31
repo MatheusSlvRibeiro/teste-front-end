@@ -21,6 +21,7 @@ Este projeto é a base para o teste de desenvolvedor Front-End da Econverse, uti
 - [React Router DOM](https://reactrouter.com/)
 - [Sass (SCSS)](https://sass-lang.com/)
 - [ESLint + Prettier + Husky + lint-staged](https://eslint.org/)
+- [Vitest + React Testing Library](https://vitest.dev/)
 
 ---
 
@@ -66,15 +67,36 @@ teste-front-end/
 
 ## 🛠️ Scripts Disponíveis
 
-| Comando             | Descrição                                     |
-| ------------------- | --------------------------------------------- |
-| `npm run dev`       | Inicia o projeto em modo desenvolvimento      |
-| `npm run build`     | Gera os arquivos para produção (`dist/`)      |
-| `npm run preview`   | Pré-visualiza o build de produção             |
-| `npm run lint`      | Executa o ESLint                              |
-| `npm run format`    | Formata o código com Prettier                 |
-| `npm run prepare`   | Ativa o Husky                                 |
-| `npm run typecheck` | Verifica tipos TypeScript sem emitir arquivos |
+| Comando                 | Descrição                                       |
+| ----------------------- | ----------------------------------------------- |
+| `npm run dev`           | Inicia o projeto em modo desenvolvimento        |
+| `npm run build`         | Gera os arquivos para produção (`dist/`)        |
+| `npm run preview`       | Pré-visualiza o build de produção               |
+| `npm run lint`          | Executa o ESLint                                |
+| `npm run format`        | Formata o código com Prettier                   |
+| `npm run prepare`       | Ativa o Husky                                   |
+| `npm run typecheck`     | Verifica tipos TypeScript sem emitir arquivos   |
+| `npm run test`          | Executa a suíte de testes unitários uma vez     |
+| `npm run test:watch`    | Executa os testes em modo watch                 |
+| `npm run test:coverage` | Executa os testes e gera relatório de cobertura |
+
+---
+
+## 🧪 Testes
+
+Os testes unitários usam [Vitest](https://vitest.dev/) (test runner nativo do Vite) com [React Testing Library](https://testing-library.com/react) para testar componentes pelo comportamento visível ao usuário, e `@testing-library/jest-dom` para matchers de DOM.
+
+Convenções:
+
+- Arquivos de teste ficam ao lado do componente/módulo testado, com o sufixo `.test.tsx` (ou `.test.ts` para lógica sem UI).
+- Exemplo de referência: [`src/components/HeroBanner/HeroBanner.test.tsx`](src/components/HeroBanner/HeroBanner.test.tsx).
+- Prefira consultas por papel/acessibilidade (`getByRole`, `getByLabelText`) a seletores por classe ou `data-testid`.
+
+Rodar a suíte:
+
+```bash
+npm run test
+```
 
 ---
 
