@@ -144,4 +144,48 @@ describe('NavBar', () => {
         await user.click(screen.getByRole('button', { name: 'Moda' }))
         expect(menuButton).toHaveAttribute('aria-expanded', 'false')
     })
+
+    it('exibe o campo de busca com placeholder correto', () => {
+        render(<NavBar />)
+
+        expect(screen.getByPlaceholderText('Buscar produtos...')).toBeInTheDocument()
+    })
+
+    it('painel de perfil não está visível quando o menu de perfil está fechado', () => {
+        render(<NavBar />)
+
+        expect(screen.queryByRole('button', { name: 'Entrar' })).not.toBeInTheDocument()
+        expect(screen.getByRole('button', { name: 'Entrar', hidden: true })).toBeInTheDocument()
+    })
+
+    it('exibe o botão "Entrar" quando o menu de perfil é aberto', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        await user.click(screen.getByRole('button', { name: 'Minha conta' }))
+
+        expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+    })
+
+    it('fecha o painel de perfil ao clicar em "Entrar"', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        await user.click(screen.getByRole('button', { name: 'Minha conta' }))
+        expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument()
+
+        await user.click(screen.getByRole('button', { name: 'Entrar' }))
+        expect(screen.queryByRole('button', { name: 'Entrar' })).not.toBeInTheDocument()
+    })
+
+    it('fecha o painel de perfil ao clicar em "Cadastrar-se"', async () => {
+        const user = userEvent.setup()
+        render(<NavBar />)
+
+        await user.click(screen.getByRole('button', { name: 'Minha conta' }))
+        expect(screen.getByRole('button', { name: 'Cadastrar-se' })).toBeInTheDocument()
+
+        await user.click(screen.getByRole('button', { name: 'Cadastrar-se' }))
+        expect(screen.queryByRole('button', { name: 'Cadastrar-se' })).not.toBeInTheDocument()
+    })
 })
