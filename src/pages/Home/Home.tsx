@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { BrandCarousel } from '@/components/BrandCarousel/BrandCarousel'
 import { CategoryGrid } from '@/components/CategoryGrid/CategoryGrid'
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner'
@@ -17,6 +17,9 @@ type FetchState =
 export function Home() {
     const [state, setState] = useState<FetchState>({ status: 'loading' })
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+    const vitrine1Id = useId()
+    const vitrine2Id = useId()
 
     useEffect(() => {
         let cancelled = false
@@ -40,16 +43,11 @@ export function Home() {
         <>
             <HeroBanner />
             <CategoryGrid />
-            <div className={styles.partners}>
-                <PartnerBanner description="Descontos exclusivos com nossos parceiros." />
-                <PartnerBanner
-                    title="Rede parceira"
-                    description="Frete grátis em compras selecionadas na rede parceira."
-                />
-            </div>
-            <BrandCarousel />
-            <section aria-labelledby="vitrine-heading" className={styles.vitrine}>
-                <h2 id="vitrine-heading" className={styles.vitrine__heading}>
+
+            <PartnerBanner description="Descontos exclusivos com nossos parceiros." />
+
+            <section aria-labelledby={vitrine1Id} className={styles.vitrine}>
+                <h2 id={vitrine1Id} className={styles.vitrine__heading}>
                     Todos os produtos
                 </h2>
 
@@ -67,6 +65,34 @@ export function Home() {
                     </div>
                 )}
             </section>
+
+            <PartnerBanner
+                title="Rede parceira"
+                description="Frete grátis em compras selecionadas na rede parceira."
+            />
+
+            <section aria-labelledby={vitrine2Id} className={styles.vitrine}>
+                <h2 id={vitrine2Id} className={styles.vitrine__heading}>
+                    Produtos relacionados
+                </h2>
+
+                {state.status === 'loading' && <p role="status">Carregando produtos…</p>}
+                {state.status === 'error' && <p role="alert">{state.message}</p>}
+                {state.status === 'success' && (
+                    <div className={styles.vitrine__grid}>
+                        {state.products.map((product) => (
+                            <ProductCard
+                                key={product.productName}
+                                product={product}
+                                onSelect={setSelectedProduct}
+                            />
+                        ))}
+                    </div>
+                )}
+            </section>
+
+            <BrandCarousel />
+
             <ProductDetailModal
                 product={selectedProduct}
                 onClose={() => setSelectedProduct(null)}

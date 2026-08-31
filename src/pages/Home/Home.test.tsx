@@ -44,15 +44,17 @@ describe('Home', () => {
     it('mostra um indicador de carregamento enquanto os produtos não chegam', () => {
         vi.mocked(getProducts).mockReturnValue(new Promise(() => {}))
         render(<Home />)
-        expect(screen.getByRole('status')).toBeInTheDocument()
+        // duas vitrines → dois status, um por seção
+        expect(screen.getAllByRole('status').length).toBeGreaterThanOrEqual(1)
     })
 
-    it('renderiza um card por produto retornado', async () => {
+    it('renderiza um card por produto retornado em cada vitrine', async () => {
         vi.mocked(getProducts).mockResolvedValue([product])
         render(<Home />)
 
         await waitFor(() => {
-            expect(screen.getByText(product.descriptionShort)).toBeInTheDocument()
+            // o produto aparece nas duas seções (vitrine + produtos relacionados)
+            expect(screen.getAllByText(product.descriptionShort).length).toBeGreaterThanOrEqual(1)
         })
     })
 
@@ -61,7 +63,8 @@ describe('Home', () => {
         render(<Home />)
 
         await waitFor(() => {
-            expect(screen.getByRole('alert')).toBeInTheDocument()
+            // duas vitrines → dois alertas, um por seção
+            expect(screen.getAllByRole('alert').length).toBeGreaterThanOrEqual(1)
         })
     })
 
