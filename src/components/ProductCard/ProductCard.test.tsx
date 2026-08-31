@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import type { Product } from '@/schemas/product'
-import { ProductCard } from './ProductCard'
+import { ProductCard, ProductCardSkeleton } from './ProductCard'
 
 const product: Product = {
     productName: 'Iphone 11 PRO MAX BRANCO',
@@ -43,5 +43,17 @@ describe('ProductCard', () => {
         render(<ProductCard product={{ ...product, price: 0 }} onSelect={vi.fn()} />)
 
         expect(screen.getByText('R$ 0,00')).toBeInTheDocument()
+    })
+
+    it('renderiza preço antigo riscado quando oldPrice é fornecido', () => {
+        render(<ProductCard product={{ ...product, oldPrice: 20000 }} onSelect={vi.fn()} />)
+
+        const oldPriceEl = screen.getByText('R$ 20.000,00')
+        expect(oldPriceEl).toBeInTheDocument()
+    })
+
+    it('renderiza ProductCardSkeleton sem erros', () => {
+        const { container } = render(<ProductCardSkeleton />)
+        expect(container.firstChild).toBeTruthy()
     })
 })

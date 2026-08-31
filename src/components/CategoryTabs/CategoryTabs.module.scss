@@ -1,0 +1,49 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.tabs {
+    display: flex;
+    overflow-x: auto;
+    border: 1px solid $color-border;
+    border-radius: $radius-button;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // Hide scrollbar cross-browser
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__item {
+        flex: 0 0 auto;
+        height: 40px;
+        padding: $space-2 $space-4;
+        border: none;
+        border-right: 1px solid $color-border;
+        background: transparent;
+        font-family: $font-family-heading;
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: $color-text;
+        white-space: nowrap;
+
+        @include focus-ring;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &--active {
+            color: $color-primary;
+            font-weight: 700;
+        }
+
+        @include respond-to(tablet) {
+            flex: 1;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+    padding: $space-6 0;
+
+    &__container {
+        @include content-container;
+
+        padding-inline: $space-4;
+    }
+}
