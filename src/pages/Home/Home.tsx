@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppLayout } from '@/components/AppLayout/AppLayout';
+import { AppLayout } from '@/components/layout/AppLayout';
 import { RelatedProductsSection } from '@/components/RelatedProductsSection/RelatedProductsSection';
 import { CategoryIcons } from '@/components/CategoryIcons/CategoryIcons';
 import { HeroBanner } from '@/components/HeroBanner/HeroBanner';
