@@ -33,4 +33,74 @@
     &__description {
         color: $color-text-muted;
     }
+
+    &__counter {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        border: 1px solid $color-border;
+        border-radius: $radius-button;
+        overflow: hidden;
+        width: fit-content;
+    }
+
+    &__counterBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 44px;
+        border: none;
+        background: $color-surface-muted;
+        color: $color-text;
+        font-size: $font-size-lg;
+        cursor: pointer;
+
+        @include focus-ring;
+
+        &:hover:not(:disabled) {
+            background: $color-border;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+    }
+
+    &__counterValue {
+        width: 48px;
+        text-align: center;
+        font-family: $font-family-heading;
+        font-weight: 600;
+        font-size: $font-size-base;
+        border-left: 1px solid $color-border;
+        border-right: 1px solid $color-border;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__buyBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: $space-2 $space-4;
+        background: $color-accent;
+        color: $color-text;
+        border: none;
+        border-radius: $radius-button;
+        font-family: $font-family-heading;
+        font-size: $font-size-base;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+
+        @include focus-ring;
+
+        &:hover {
+            background: $color-accent-hover;
+        }
+    }
 }

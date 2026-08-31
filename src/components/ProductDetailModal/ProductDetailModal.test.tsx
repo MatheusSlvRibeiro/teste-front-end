@@ -55,4 +55,41 @@ describe('ProductDetailModal', () => {
 
         expect(onClose).toHaveBeenCalledOnce()
     })
+
+    it('contador renderiza com valor inicial "01"', () => {
+        render(<ProductDetailModal product={iphone11} onClose={vi.fn()} />)
+        expect(screen.getByText('01')).toBeInTheDocument()
+    })
+
+    it('clique em + incrementa a quantidade para "02"', async () => {
+        render(<ProductDetailModal product={iphone11} onClose={vi.fn()} />)
+
+        await userEvent.click(screen.getByRole('button', { name: 'Aumentar quantidade' }))
+
+        expect(screen.getByText('02')).toBeInTheDocument()
+    })
+
+    it('botão de decrementar está desabilitado quando quantidade é 1', () => {
+        render(<ProductDetailModal product={iphone11} onClose={vi.fn()} />)
+        expect(screen.getByRole('button', { name: 'Diminuir quantidade' })).toBeDisabled()
+    })
+
+    it('clicar em + e depois em - retorna para "01"', async () => {
+        render(<ProductDetailModal product={iphone11} onClose={vi.fn()} />)
+
+        await userEvent.click(screen.getByRole('button', { name: 'Aumentar quantidade' }))
+        expect(screen.getByText('02')).toBeInTheDocument()
+
+        await userEvent.click(screen.getByRole('button', { name: 'Diminuir quantidade' }))
+        expect(screen.getByText('01')).toBeInTheDocument()
+    })
+
+    it('quantidade volta para "01" ao trocar de produto', () => {
+        const { rerender } = render(<ProductDetailModal product={iphone11} onClose={vi.fn()} />)
+        expect(screen.getByText('01')).toBeInTheDocument()
+
+        rerender(<ProductDetailModal product={iphone13} onClose={vi.fn()} />)
+
+        expect(screen.getByText('01')).toBeInTheDocument()
+    })
 })
