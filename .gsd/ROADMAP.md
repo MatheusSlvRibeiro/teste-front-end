@@ -25,58 +25,58 @@ Marcadores de status: `[ ]` pendente · `[~]` em progresso · `[x]` concluído
 > Meta: entregar a vitrine consumindo o JSON remoto de produtos com a interação de modal de detalhes, cobrindo os requisitos obrigatórios do teste, e reproduzir visualmente as demais seções capturadas do Figma (header, hero, categorias, parceiros, marcas, newsletter, footer) como chrome estático.
 > Entregável quando: o visitante abre a página, vê todas as seções do Figma renderizadas, vê os produtos do JSON na vitrine, clica em um e visualiza os dados corretos daquele produto em um modal — respeitando o layout do Figma pixel a pixel.
 
-### S01 — Base do design system `[ ]`
+### S01 — Base do design system `[x]`
 
-- [ ] T01: extrair variáveis de design (cores, fontes, espaçamentos) do Figma para `src/styles/_variables.scss`
-- [ ] T02: configurar injeção global de `_variables.scss`/`_mixins.scss` via `vite.config.ts` (`additionalData`)
-- [ ] T03: montar layout base da página (header/hero se houver, grid da vitrine) com HTML semântico
+- [x] T01: extrair variáveis de design (cores, fontes, espaçamentos) do Figma para `src/styles/_variables.scss`
+- [x] T02: configurar injeção global de `_variables.scss`/`_mixins.scss` via `vite.config.ts` (`additionalData`)
+- [x] T03: montar layout base da página (header/hero se houver, grid da vitrine) com HTML semântico
 
-### S02 — Consumo de dados e vitrine `[ ]`
+### S02 — Consumo de dados e vitrine `[x]`
 
-- [ ] T01: criar schema zod (`src/schemas/product.ts`) para validar o shape do produto retornado pelo JSON
-- [ ] T02: criar `src/lib/api` com interface única `getProducts()` e duas implementações (fetch real vs mock `src/mocks/products.ts`), alternadas por `VITE_USE_MOCK_API`
-- [ ] T03: criar componente `ProductCard` (`src/components/ProductCard/`) e renderizar o grid de produtos na vitrine
-- [ ] T04: tratar estados de loading e erro da busca (sem tela em branco em caso de falha)
+- [x] T01: criar schema zod (`src/schemas/product.ts`) para validar o shape do produto retornado pelo JSON
+- [x] T02: criar `src/lib/api` com interface única `getProducts()` e duas implementações (fetch real vs mock `src/mocks/products.ts`), alternadas por `VITE_USE_MOCK_API`
+- [x] T03: criar componente `ProductCard` (`src/components/ProductCard/`) e renderizar o grid de produtos na vitrine
+- [x] T04: tratar estados de loading e erro da busca (sem tela em branco em caso de falha)
 
-### S03 — Modal de detalhes do produto `[ ]`
+### S03 — Modal de detalhes do produto `[x]`
 
-- [ ] T01: criar componente `Modal` genérico e acessível (foco preso, fecha com Esc, fecha clicando fora)
-- [ ] T02: criar `ProductDetailModal` exibindo nome, imagem, descrição e preço do produto clicado
-- [ ] T03: conectar o clique no `ProductCard` à abertura do modal com o produto correto (sem vazamento de estado entre produtos)
+- [x] T01: criar componente `Modal` genérico e acessível (foco preso, fecha com Esc, fecha clicando fora)
+- [x] T02: criar `ProductDetailModal` exibindo nome, imagem, descrição e preço do produto clicado
+- [x] T03: conectar o clique no `ProductCard` à abertura do modal com o produto correto (sem vazamento de estado entre produtos)
 
-### S04 — Header e navegação `[ ]`
+### S04 — Header e navegação `[x]`
 
 > Chrome visual, sem lógica funcional (busca/wishlist/carrinho/login não fazem nada).
 
-- [ ] T01: criar `Header` (`src/components/Header/`) — barra de avisos (compra segura, frete grátis, parcele), busca, ícones (trocar, wishlist, usuário, carrinho)
-- [ ] T02: criar `NavBar` — categorias (Todas categorias, Supermercado, Livros, Moda, Lançamentos, Ofertas do dia, Assinatura), item ativo destacado
+- [x] T01: criar `Header` (`src/components/Header/`) — barra de avisos (compra segura, frete grátis, parcele), busca, ícones (trocar, wishlist, usuário, carrinho)
+- [x] T02: criar `NavBar` — categorias (Todas categorias, Supermercado, Livros, Moda, Lançamentos, Ofertas do dia, Assinatura), item ativo destacado
 
-### S05 — Hero e categorias em destaque `[ ]`
+### S05 — Hero e categorias em destaque `[x]`
 
-- [ ] T01: criar `HeroBanner` — imagem de fundo, headline, destaque "50% Off", botão "Ver produto"
-- [ ] T02: criar `CategoryGrid` — grid de 7 ícones de categoria (Tecnologia ativa, demais neutras)
+- [x] T01: criar `HeroBanner` — imagem de fundo, headline, destaque "50% Off", botão "Ver produto"
+- [x] T02: criar `CategoryGrid` — grid de 7 ícones de categoria (Tecnologia ativa, demais neutras)
 
-### S06 — Parceiros e marcas `[ ]`
+### S06 — Parceiros e marcas `[x]`
 
-- [ ] T01: criar `PartnerBanner` — par de banners "Parceiros" com imagem, texto e botão "CONFIRA"
-- [ ] T02: criar `BrandCarousel` — carrossel de logos em "Navegue por marcas"
+- [x] T01: criar `PartnerBanner` — par de banners "Parceiros" com imagem, texto e botão "CONFIRA"
+- [x] T02: criar `BrandCarousel` — carrossel de logos em "Navegue por marcas"
 
-### S07 — Newsletter e footer `[ ]`
+### S07 — Newsletter e footer `[x]`
 
-- [ ] T01: criar `Newsletter` — faixa escura com título, campos nome/e-mail, checkbox de termos, botão "INSCREVER"
-- [ ] T02: criar `Footer` — logo, descrição, colunas Institucional/Ajuda/Termos, ícones sociais
+- [x] T01: criar `Newsletter` — faixa escura com título, campos nome/e-mail, checkbox de termos, botão "INSCREVER"
+- [x] T02: criar `Footer` — logo, descrição, colunas Institucional/Ajuda/Termos, ícones sociais
 
-### S08 — Montagem final da página `[ ]`
+### S08 — Montagem final da página `[x]`
 
-- [ ] T01: compor `App.tsx` com todas as seções na ordem do Figma (Header, NavBar, Hero, CategoryGrid, vitrine + PartnerBanner intercalados conforme print, BrandCarousel, Newsletter, Footer)
-- [ ] T02: repetir a seção de vitrine ("Produtos relacionados") nos pontos em que aparece no Figma, reaproveitando o mesmo componente
+- [x] T01: compor `App.tsx` com todas as seções na ordem do Figma (Header, NavBar, Hero, CategoryGrid, vitrine + PartnerBanner intercalados conforme print, BrandCarousel, Newsletter, Footer)
+- [x] T02: repetir a seção de vitrine ("Produtos relacionados") nos pontos em que aparece no Figma, reaproveitando o mesmo componente
 
-### S09 — Polimento e qualidade `[ ]`
+### S09 — Polimento e qualidade `[x]`
 
-- [ ] T01: revisar pixel-perfect contra o Figma — todas as seções (cores, fontes, botões, espaçamentos)
-- [ ] T02: aplicar boas práticas de SEO e HTML semântico (meta tags, landmarks, `alt` em imagens)
-- [ ] T03: escrever testes (Vitest + Testing Library) para `ProductCard`, `Modal`/`ProductDetailModal` e `lib/api`, cobrindo os 3 princípios
-- [ ] T04: atualizar `README.md` com instruções de setup, build e test
+- [x] T01: revisar pixel-perfect contra o Figma — todas as seções (cores, fontes, botões, espaçamentos)
+- [x] T02: aplicar boas práticas de SEO e HTML semântico (meta tags, landmarks, `alt` em imagens)
+- [x] T03: escrever testes (Vitest + Testing Library) para `ProductCard`, `Modal`/`ProductDetailModal` e `lib/api`, cobrindo os 3 princípios — 93 arquivos / 462 testes passando
+- [x] T04: atualizar `README.md` com instruções de setup, build e test
 
 ---
 

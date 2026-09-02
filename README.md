@@ -58,6 +58,7 @@ cp .env.example .env
 |---|---|---|
 | `VITE_PRODUCTS_API_URL` | URL do JSON de produtos | `https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json` |
 | `VITE_USE_MOCK_API` | `"true"` para usar mock local em vez do fetch real | `"false"` |
+| `VITE_API_BASE_URL` | Base de um backend REST real, lida por `src/services/api.ts` (`GenericService`) | não usada neste teste — sem backend próprio |
 
 ### Desenvolvimento
 
@@ -85,10 +86,36 @@ npm run test        # executa todos os testes (Vitest + Testing Library)
 
 ```bash
 npm run lint        # ESLint com flat config (TS + React Hooks + Prettier)
+npm run lint:fix     # aplica os fixes automáticos
+npm run format       # Prettier (npm run format:check só verifica)
 ```
+
+### Screenshot de validação visual
+
+```bash
+npm run screenshot                    # sobe o dev server, captura full-page em 1441×900 e derruba o servidor
+npm run screenshot -- / desktop.png   # rota e nome de arquivo opcionais
+```
+
+Não é uma suíte E2E (sem asserções), só um atalho para conferência visual manual durante o desenvolvimento. O arquivo gerado fica em `screenshots/` (ignorada pelo git). Requer o Chromium do Playwright — se não estiver instalado, rode `npx playwright install chromium`.
 
 ### Validação completa (lint + build + test)
 
 ```bash
 npm run lint && npm run build && npm run test
 ```
+
+Esse é o gate que precisa passar limpo antes de qualquer commit — ver `AGENTS.md`.
+
+---
+
+## Sobre o desenvolvimento
+
+Este projeto foi construído com um workflow assistido por IA (Claude Code), orquestrado por um harness próprio versionado no repositório:
+
+- **`AGENTS.md`** — regras universais do projeto (idioma, gate de validação, fluxo de branches).
+- **`.gsd/`** — documentação de arquitetura viva: `STACK.md` (stack e convenções), `SPEC.md` (especificação funcional) e `ROADMAP.md` (milestones/sprints/tasks com status).
+- **`.harness/`** — rastreamento de features (`feature_list.json`) com critérios de aceite e status de implementação/verificação, e baseline de métricas (`baseline.json`).
+- **`.claude/`** — configuração de skills e subagentes especializados usados durante a implementação (ex.: `frontend-developer` para componentes React, `test-automator` para os testes).
+
+A ideia é manter as decisões de arquitetura e o progresso rastreáveis e auditáveis, com um gate de qualidade (`npm run lint && npm run build && npm run test`) que precisa passar antes de cada commit — os 462 testes e o build atuais passam limpos.
