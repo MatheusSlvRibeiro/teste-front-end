@@ -13,6 +13,7 @@ const mockGetRelatedProducts = vi.mocked(productsService.getRelatedProducts)
 
 const MOCK_PRODUCTS = [
     {
+        id: 'produto-a',
         productName: 'Produto A',
         descriptionShort: 'Descrição A',
         photo: 'http://example.com/a.jpg',

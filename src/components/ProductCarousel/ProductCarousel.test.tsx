@@ -8,6 +8,7 @@ import { ProductCarousel } from './ProductCarousel'
 Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
 
 const makeProduct = (name: string, price = 100): Product => ({
+    id: name,
     productName: name,
     descriptionShort: `${name} description`,
     photo: `https://example.com/${name}.png`,

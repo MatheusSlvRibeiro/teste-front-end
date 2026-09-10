@@ -16,6 +16,7 @@ const mockGetRelatedProducts = vi.mocked(productsService.getRelatedProducts)
 Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
 
 const product: Product = {
+    id: 'product-1',
     productName: 'Iphone 11 PRO MAX BRANCO',
     descriptionShort: 'Iphone 11 PRO MAX BRANCO',
     photo: 'https://example.com/foto.png',
@@ -23,6 +24,7 @@ const product: Product = {
 }
 
 const secondProduct: Product = {
+    id: 'product-2',
     productName: 'IPHONE 13 MINI',
     descriptionShort: 'IPHONE 13 MINI',
     photo: 'https://example.com/foto2.png',

@@ -141,7 +141,7 @@ export function ProductCarousel({
                           </div>
                       ))
                     : currentProducts.map((product, i) => (
-                          <div key={product.productName} className={styles.carousel__slide}>
+                          <div key={product.id} className={styles.carousel__slide}>
                               <ProductCard product={product} onSelect={onProductClick} index={i} />
                           </div>
                       ))}

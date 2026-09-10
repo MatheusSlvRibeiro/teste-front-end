@@ -5,6 +5,7 @@ import type { Product } from '@/schemas/product'
 import { ProductDetailModal } from './ProductDetailModal'
 
 const iphone11: Product = {
+    id: 'iphone-11',
     productName: 'Iphone 11 PRO MAX BRANCO',
     descriptionShort: 'Descrição do iPhone 11',
     photo: 'https://example.com/iphone11.png',
@@ -12,6 +13,7 @@ const iphone11: Product = {
 }
 
 const iphone13: Product = {
+    id: 'iphone-13',
     productName: 'IPHONE 13 MINI',
     descriptionShort: 'Descrição do iPhone 13',
     photo: 'https://example.com/iphone13.png',
