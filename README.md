@@ -1,5 +1,7 @@
 # Teste Econverse: Vaga Desenvolvedor Front-End
 
+Backend deste projeto: [econverse-backend](https://github.com/MatheusSlvRibeiro/econverse-backend) — frontend e backend formam uma peça única de portfólio.
+
 ### Vem ser #Econverse!
 
 Segue abaixo as instruções para a execução do teste.
