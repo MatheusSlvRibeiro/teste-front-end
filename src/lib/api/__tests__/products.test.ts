@@ -24,6 +24,7 @@ describe('getProducts', () => {
         vi.stubEnv('VITE_PRODUCTS_API_URL', 'https://example.com/produtos.json')
         const apiProducts = [
             {
+                id: 'produto-real',
                 productName: 'Produto real',
                 descriptionShort: 'Descrição',
                 photo: 'https://example.com/foto.png',

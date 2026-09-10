@@ -5,6 +5,7 @@ import type { Product } from '@/schemas/product'
 import { ProductCard, ProductCardSkeleton } from './ProductCard'
 
 const product: Product = {
+    id: 'iphone-11',
     productName: 'Iphone 11 PRO MAX BRANCO',
     descriptionShort: 'Iphone 11 PRO MAX BRANCO, 128GB',
     photo: 'https://example.com/foto.png',

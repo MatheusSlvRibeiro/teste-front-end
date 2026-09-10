@@ -13,7 +13,7 @@ export function ProductDetailModal({ product, onClose }: ProductDetailModalProps
     const [quantity, setQuantity] = useState(1)
     const [prevProduct, setPrevProduct] = useState<Product | null>(product)
 
-    if (prevProduct !== product) {
+    if (prevProduct?.id !== product?.id) {
         setPrevProduct(product)
         setQuantity(1)
     }

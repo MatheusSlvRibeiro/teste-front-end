@@ -6,6 +6,7 @@ import { RelatedProductsSection } from './RelatedProductsSection'
 Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
 
 const product: Product = {
+    id: 'product-teste',
     productName: 'Produto Teste',
     descriptionShort: 'Descrição do produto teste',
     photo: 'https://example.com/foto.png',
